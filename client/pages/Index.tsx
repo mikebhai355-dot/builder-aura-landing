@@ -41,6 +41,13 @@ const menuHighlights = [
     price: "₹1,350",
     image: "🥗",
     category: "Appetizer"
+  },
+  {
+    name: "Royal Butter Chicken",
+    description: "Tender chicken in rich tomato cream sauce with aromatic spices",
+    price: "₹2,200",
+    image: "🍛",
+    category: "North Indian"
   }
 ];
 
