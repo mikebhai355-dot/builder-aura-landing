@@ -41,37 +41,11 @@ const menuHighlights = [
   }
 ];
 
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    rating: 5,
-    comment: "The most amazing dining experience! Perfect for our anniversary.",
-    date: "2 days ago"
-  },
-  {
-    name: "Michael Chen",
-    rating: 5,
-    comment: "Exceptional food and service. The atmosphere is simply magical.",
-    date: "1 week ago"
-  },
-  {
-    name: "Emily Rodriguez",
-    rating: 5,
-    comment: "Butterfly restaurant exceeded all our expectations. Highly recommended!",
-    date: "2 weeks ago"
-  }
-];
-
 export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
