@@ -274,6 +274,84 @@ export default function Booking() {
           </p>
         </div>
 
+        {/* Location & Distance Section */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-gold/5">
+            <CardContent className="p-6">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-2 flex items-center">
+                    <MapPin className="w-5 h-5 mr-2 text-primary" />
+                    Restaurant Location
+                  </h3>
+                  <p className="text-muted-foreground">{restaurantLocation.address}</p>
+                  {userLocation && distanceToRestaurant && (
+                    <div className="mt-2 flex items-center text-sm">
+                      <span className="text-green-600 font-medium">
+                        📍 You are approximately {distanceToRestaurant} km away
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  {!userLocation ? (
+                    <Button
+                      onClick={getUserLocation}
+                      variant="outline"
+                      size="sm"
+                      disabled={locationPermission === "requesting"}
+                      className="border-primary text-primary hover:bg-primary/10"
+                    >
+                      {locationPermission === "requesting" ? (
+                        <>
+                          <Clock className="w-4 h-4 mr-2 animate-spin" />
+                          Detecting...
+                        </>
+                      ) : (
+                        <>
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get My Location
+                        </>
+                      )}
+                    </Button>
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-sm text-green-600 font-medium">✅ Location detected</div>
+                      <Button
+                        onClick={getUserLocation}
+                        variant="outline"
+                        size="sm"
+                        className="mt-1 text-xs"
+                      >
+                        Refresh Location
+                      </Button>
+                    </div>
+                  )}
+                  <a
+                    href={`https://maps.google.com/dir/${userLocation ? `${userLocation.lat},${userLocation.lng}` : ''}/${restaurantLocation.lat},${restaurantLocation.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <Button size="sm" className="bg-gradient-to-r from-primary to-gold w-full">
+                      <Map className="w-4 h-4 mr-2" />
+                      Get Directions
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              {locationPermission === "denied" && (
+                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p className="text-sm text-yellow-800">
+                    📱 Location access was denied. You can still make a booking, or enable location in your browser settings for distance calculation.
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
         <div className="max-w-4xl mx-auto">
           <Tabs
             value={bookingType}
