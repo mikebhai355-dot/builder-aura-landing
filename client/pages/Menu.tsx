@@ -560,22 +560,6 @@ export default function Menu() {
               </div>
             </Link>
             <div className="flex items-center space-x-4">
-              {/* Social Media Buttons */}
-              <div className="hidden md:flex items-center space-x-2">
-                <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm font-bold">W</span>
-                </a>
-                <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm font-bold">I</span>
-                </a>
-                <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm font-bold">F</span>
-                </a>
-                <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
-                  <span className="text-white text-sm font-bold">M</span>
-                </a>
-              </div>
-
               {/* Delivery Mode Toggle */}
               <div className="flex border rounded-lg overflow-hidden">
                 <button
