@@ -98,6 +98,12 @@ export default function Booking() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate only required fields
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      alert('Please fill in your name and phone number');
+      return;
+    }
+
     const bookingData = {
       ...formData,
       type: bookingType,
