@@ -351,7 +351,7 @@ export default function Booking() {
                         {/* Decoration Options */}
                         <div>
                           <Label className="text-base font-semibold mb-4 block">Decoration Options</Label>
-                          <div className="grid md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                             {decorationOptions.map((decoration) => {
                               const IconComponent = decoration.icon;
                               return (
