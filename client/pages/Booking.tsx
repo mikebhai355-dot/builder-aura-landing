@@ -29,6 +29,7 @@ import {
   Music,
   Cake,
   Flower,
+  Map,
 } from "lucide-react";
 
 const decorationOptions = [
