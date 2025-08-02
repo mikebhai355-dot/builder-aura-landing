@@ -162,9 +162,9 @@ export default function Index() {
               We offer more than just a meal - we create unforgettable experiences
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
-              <CardContent className="p-6 text-center">
+              <CardContent className="p-4 md:p-6 text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <ChefHat className="w-8 h-8 text-primary-foreground" />
                 </div>
