@@ -128,8 +128,8 @@ export default function Booking() {
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                  Butterfly
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
+                  Butterfly Garden
                 </span>
               </div>
             </Link>
