@@ -71,8 +71,8 @@ const menuData: MenuItem[] = [
     id: '1',
     name: 'Butterfly Special Pasta',
     description: 'Fresh handmade pasta tossed with truffle oil, wild mushrooms, and aged parmesan. Finished with microgreens and a touch of black pepper.',
-    price: 24,
-    originalPrice: 28,
+    price: 1800,
+    originalPrice: 2100,
     category: 'Main Course',
     image: '🍝',
     rating: 4.8,
@@ -98,7 +98,7 @@ const menuData: MenuItem[] = [
     id: '2',
     name: 'Golden Sunset Salmon',
     description: 'Pan-seared Atlantic salmon with citrus glaze, served with roasted vegetables and quinoa pilaf. A healthy and delicious choice.',
-    price: 32,
+    price: 2400,
     category: 'Seafood',
     image: '🐟',
     rating: 4.9,
@@ -124,7 +124,7 @@ const menuData: MenuItem[] = [
     id: '3',
     name: 'Garden Symphony Salad',
     description: 'Fresh mixed greens with seasonal fruits, candied nuts, goat cheese, and our signature honey vinaigrette.',
-    price: 18,
+    price: 1350,
     category: 'Appetizer',
     image: '🥗',
     rating: 4.6,
@@ -150,7 +150,7 @@ const menuData: MenuItem[] = [
     id: '4',
     name: 'Spiced Lamb Tagine',
     description: 'Slow-cooked Moroccan lamb with apricots, almonds, and aromatic spices. Served with fluffy couscous and fresh herbs.',
-    price: 36,
+    price: 2700,
     category: 'Main Course',
     image: '🍖',
     rating: 4.7,
@@ -176,7 +176,7 @@ const menuData: MenuItem[] = [
     id: '5',
     name: 'Chocolate Butterfly Soufflé',
     description: 'Decadent dark chocolate soufflé with molten center, served with vanilla bean ice cream and berry coulis.',
-    price: 14,
+    price: 1050,
     category: 'Dessert',
     image: '🍫',
     rating: 4.9,
@@ -202,7 +202,7 @@ const menuData: MenuItem[] = [
     id: '6',
     name: 'Artisan Pizza Margherita',
     description: 'Wood-fired pizza with San Marzano tomatoes, fresh mozzarella, basil, and extra virgin olive oil on crispy thin crust.',
-    price: 22,
+    price: 1650,
     category: 'Main Course',
     image: '🍕',
     rating: 4.5,
@@ -227,10 +227,10 @@ const menuData: MenuItem[] = [
 ];
 
 const deliveryZones = [
-  { area: 'Downtown', time: '25-35 min', fee: 3.99 },
-  { area: 'Midtown', time: '30-40 min', fee: 4.99 },
-  { area: 'Uptown', time: '35-45 min', fee: 5.99 },
-  { area: 'Suburbs', time: '40-50 min', fee: 6.99 }
+  { area: 'Muzaffarpur City', time: '25-35 min', fee: 50 },
+  { area: 'Gobarsahi', time: '15-25 min', fee: 30 },
+  { area: 'Dumri', time: '10-20 min', fee: 20 },
+  { area: 'Nearby Areas', time: '40-50 min', fee: 80 }
 ];
 
 export default function Menu() {
@@ -398,7 +398,7 @@ export default function Menu() {
                           <div key={cartItem.item.id} className="flex items-center justify-between p-3 border rounded-lg">
                             <div className="flex-1">
                               <h4 className="font-medium">{cartItem.item.name}</h4>
-                              <p className="text-sm text-muted-foreground">${cartItem.item.price}</p>
+                              <p className="text-sm text-muted-foreground">₹{cartItem.item.price}</p>
                             </div>
                             <div className="flex items-center space-x-2">
                               <Button
@@ -422,7 +422,7 @@ export default function Menu() {
                         <div className="border-t pt-4">
                           <div className="flex justify-between font-semibold text-lg">
                             <span>Total:</span>
-                            <span>${getCartTotal().toFixed(2)}</span>
+                            <span>₹{getCartTotal().toFixed(0)}</span>
                           </div>
                           <Link to="/booking" className="w-full mt-4 block">
                             <Button className="w-full bg-gradient-to-r from-primary to-gold">
@@ -476,14 +476,14 @@ export default function Menu() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-4">
               <h3 className="text-lg font-semibold mb-2">🚚 Home Delivery Available</h3>
-              <p className="text-sm text-muted-foreground">Minimum order $25 • Free delivery on orders above $50</p>
+              <p className="text-sm text-muted-foreground">Minimum order ₹1,500 • Free delivery on orders above ₹3,000</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               {deliveryZones.map((zone, index) => (
                 <div key={index} className="text-center p-3 bg-white rounded-lg shadow-sm">
                   <div className="font-medium text-sm">{zone.area}</div>
                   <div className="text-xs text-muted-foreground">{zone.time}</div>
-                  <div className="text-xs font-medium text-primary">${zone.fee}</div>
+                  <div className="text-xs font-medium text-primary">₹{zone.fee}</div>
                 </div>
               ))}
             </div>
@@ -620,14 +620,14 @@ export default function Menu() {
                         <div className="flex items-center gap-2">
                           {item.originalPrice && (
                             <span className="text-sm text-muted-foreground line-through">
-                              ${item.originalPrice}
-                            </span>
+                            ₹{item.originalPrice}
+                          </span>
                           )}
-                          <span className="text-2xl font-bold text-primary">${item.price}</span>
+                          <span className="text-2xl font-bold text-primary">₹{item.price}</span>
                         </div>
                         {item.originalPrice && (
                           <Badge variant="destructive" className="text-xs">
-                            Save ${item.originalPrice - item.price}
+                            Save ₹{item.originalPrice - item.price}
                           </Badge>
                         )}
                       </div>
@@ -802,7 +802,7 @@ export default function Menu() {
 
                 {/* Add to Cart */}
                 <div className="flex items-center justify-between pt-4 border-t">
-                  <div className="text-2xl font-bold text-primary">${selectedItem.price}</div>
+                  <div className="text-2xl font-bold text-primary">₹{selectedItem.price}</div>
                   <Button
                     onClick={() => {
                       addToCart(selectedItem);
