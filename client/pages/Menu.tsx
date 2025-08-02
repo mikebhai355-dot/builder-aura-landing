@@ -703,8 +703,8 @@ export default function Menu() {
 
       <div className="container mx-auto px-4 py-8">
         {/* Search and Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="flex-1 relative">
+        <div className="flex flex-col gap-4 mb-6 md:mb-8">
+          <div className="relative">
             <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search dishes, ingredients, or tags..."
@@ -713,7 +713,7 @@ export default function Menu() {
               className="pl-10"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger className="w-40">
                 <SelectValue placeholder="Sort by" />
