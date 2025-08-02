@@ -93,6 +93,77 @@ export default function Booking() {
   const [selectedDecorations, setSelectedDecorations] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // Calculate distance between two points using Haversine formula
+  const calculateDistance = (lat1, lng1, lat2, lng2) => {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a =
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLng/2) * Math.sin(dLng/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = R * c;
+    return distance;
+  };
+
+  // Get user's current location
+  const getUserLocation = () => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by this browser.');
+      return;
+    }
+
+    setLocationPermission("requesting");
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userPos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        setUserLocation(userPos);
+        setLocationPermission("granted");
+
+        // Calculate distance to restaurant
+        const distance = calculateDistance(
+          userPos.lat,
+          userPos.lng,
+          restaurantLocation.lat,
+          restaurantLocation.lng
+        );
+        setDistanceToRestaurant(distance.toFixed(1));
+      },
+      (error) => {
+        console.error('Error getting location:', error);
+        setLocationPermission("denied");
+        let errorMessage = 'Unable to retrieve your location.';
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = 'Location access denied. You can still make a booking without location.';
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = 'Location information is unavailable.';
+            break;
+          case error.TIMEOUT:
+            errorMessage = 'Location request timed out.';
+            break;
+        }
+        alert(errorMessage);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 300000 // 5 minutes
+      }
+    );
+  };
+
+  useEffect(() => {
+    // Auto-detect location when component mounts
+    getUserLocation();
+  }, []);
+
   const handleDecorationChange = (decorationId, checked) => {
     if (checked) {
       const decoration = decorationOptions.find((d) => d.id === decorationId);
