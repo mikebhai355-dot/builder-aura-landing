@@ -449,7 +449,7 @@ export default function Index() {
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-            <p>&copy; 2024 Butterfly Garden Restaurant & Cafe. All rights reserved.</p>
+            <p>&copy; 2024 Butterfly Garden. All rights reserved.</p>
           </div>
         </div>
       </footer>
