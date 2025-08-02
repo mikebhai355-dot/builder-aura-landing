@@ -119,9 +119,11 @@ Message: ${formData.message}`;
     const whatsappUrl = `https://wa.me/917992240355?text=${encodeURIComponent(whatsappMessage)}`;
 
     // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, "_blank");
 
-    alert("Your message has been prepared for WhatsApp! We'll get back to you within 24 hours.");
+    alert(
+      "Your message has been prepared for WhatsApp! We'll get back to you within 24 hours.",
+    );
     setFormData({
       name: "",
       email: "",
@@ -326,7 +328,10 @@ Message: ${formData.message}`;
                   <Phone className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <div className="font-medium">Phone</div>
-                    <a href={`tel:${contactInfo.phone}`} className="text-primary hover:underline">
+                    <a
+                      href={`tel:${contactInfo.phone}`}
+                      className="text-primary hover:underline"
+                    >
                       {contactInfo.phone}
                     </a>
                     <div className="text-sm text-muted-foreground">
@@ -338,7 +343,10 @@ Message: ${formData.message}`;
                   <Mail className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <div className="font-medium">Email</div>
-                    <a href={`mailto:${contactInfo.email}`} className="text-primary hover:underline">
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="text-primary hover:underline"
+                    >
                       {contactInfo.email}
                     </a>
                     <div className="text-sm text-muted-foreground">

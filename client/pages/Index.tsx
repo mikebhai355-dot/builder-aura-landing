@@ -63,8 +63,8 @@ export default function Index() {
     setIsVisible(true);
 
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -77,11 +77,19 @@ export default function Index() {
               {/* Logo - Custom SVG */}
               <div className="relative">
                 <div className="w-12 h-12 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md hover-glow transition-all duration-300">
-                  <img src="/butterfly-logo.svg" alt="Butterfly Garden Logo" className="w-8 h-8" />
+                  <img
+                    src="/butterfly-logo.svg"
+                    alt="Butterfly Garden Logo"
+                    className="w-8 h-8"
+                  />
                 </div>
                 {/* Floating decorative elements */}
                 <div className="absolute -top-2 -right-2 animate-pulse">
-                  <img src="/leaf-decoration.svg" alt="" className="w-4 h-4 opacity-70" />
+                  <img
+                    src="/leaf-decoration.svg"
+                    alt=""
+                    className="w-4 h-4 opacity-70"
+                  />
                 </div>
               </div>
               <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
@@ -131,7 +139,11 @@ export default function Index() {
               className="lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -549,7 +561,11 @@ export default function Index() {
                     Call: 7992240355
                   </Button>
                 </a>
-                <a href="https://wa.me/917992240355?text=Hello! I would like to inquire about catering services at Butterfly Garden Restaurant." target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://wa.me/917992240355?text=Hello! I would like to inquire about catering services at Butterfly Garden Restaurant."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button
                     variant="outline"
                     className="border-gold text-gold hover:bg-gold/10 w-full sm:w-auto"
@@ -615,7 +631,11 @@ export default function Index() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
-                  <img src="/butterfly-logo.svg" alt="Butterfly Garden" className="w-5 h-5" />
+                  <img
+                    src="/butterfly-logo.svg"
+                    alt="Butterfly Garden"
+                    className="w-5 h-5"
+                  />
                 </div>
                 <span className="text-lg md:text-xl font-bold">
                   Butterfly Garden

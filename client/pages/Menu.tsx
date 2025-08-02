@@ -683,7 +683,10 @@ export default function Menu() {
               {/* Cart - Fixed for mobile */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="relative min-w-0 shrink-0">
+                  <Button
+                    variant="outline"
+                    className="relative min-w-0 shrink-0"
+                  >
                     <ShoppingCart className="w-4 h-4 sm:mr-2" />
                     <span className="hidden sm:inline">Cart</span>
                     {getCartItemCount() > 0 && (
