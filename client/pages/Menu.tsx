@@ -762,9 +762,9 @@ export default function Menu() {
 
         {/* Menu Categories Tabs */}
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-4 md:grid-cols-8 gap-1">
             {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="text-xs md:text-sm">
+              <TabsTrigger key={category} value={category} className="text-xs md:text-sm px-2 md:px-4">
                 {category}
               </TabsTrigger>
             ))}
