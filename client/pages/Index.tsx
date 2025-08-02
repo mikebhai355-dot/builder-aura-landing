@@ -405,33 +405,31 @@ export default function Index() {
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-4">
-                  <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">W</span>
+              <div className="space-y-4">
+                <div className="flex flex-col space-y-3">
+                  <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-green-400 transition-all duration-300 group">
+                    <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center group-hover:bg-green-400 transition-colors">
+                      <MessageSquare className="w-4 h-4 text-white" />
                     </div>
-                    <span>WhatsApp</span>
+                    <span className="group-hover:text-green-400">WhatsApp</span>
                   </a>
-                  <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
-                    <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">I</span>
+                  <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-pink-400 transition-all duration-300 group">
+                    <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center group-hover:from-pink-400 group-hover:to-purple-400 transition-all">
+                      <Instagram className="w-4 h-4 text-white" />
                     </div>
-                    <span>Instagram</span>
+                    <span className="group-hover:text-pink-400">Instagram</span>
                   </a>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">F</span>
+                  <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-blue-400 transition-all duration-300 group">
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+                      <Facebook className="w-4 h-4 text-white" />
                     </div>
-                    <span>Facebook</span>
+                    <span className="group-hover:text-blue-400">Facebook</span>
                   </a>
-                  <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">M</span>
+                  <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-red-400 transition-all duration-300 group">
+                    <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center group-hover:bg-red-400 transition-colors">
+                      <Map className="w-4 h-4 text-white" />
                     </div>
-                    <span>Google Maps</span>
+                    <span className="group-hover:text-red-400">Location</span>
                   </a>
                 </div>
               </div>
