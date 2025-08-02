@@ -137,10 +137,20 @@ export default function Index() {
           </div>
         </div>
         
+        {/* Animated Butterflies */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-20 left-10 text-4xl animate-[flutter_6s_ease-in-out_infinite] opacity-60">🦋</div>
+          <div className="absolute top-40 right-20 text-3xl animate-[flutter_8s_ease-in-out_infinite_2s] opacity-50">🦋</div>
+          <div className="absolute bottom-40 left-1/4 text-2xl animate-[flutter_10s_ease-in-out_infinite_4s] opacity-70">🦋</div>
+          <div className="absolute top-1/3 right-1/3 text-3xl animate-[flutter_7s_ease-in-out_infinite_1s] opacity-40">🦋</div>
+          <div className="absolute bottom-20 right-10 text-2xl animate-[flutter_9s_ease-in-out_infinite_3s] opacity-60">🦋</div>
+          <div className="absolute top-60 left-1/2 text-xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-50">🦋</div>
+        </div>
+
         {/* Floating Elements */}
-        <div className="absolute top-32 left-10 w-20 h-20 bg-gradient-to-r from-gold to-primary rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-32 right-10 w-16 h-16 bg-gradient-to-r from-primary to-copper rounded-full opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-gold rounded-full opacity-30 animate-bounce delay-500"></div>
+        <div className="absolute top-32 left-10 w-16 h-16 bg-gradient-to-r from-gold to-primary rounded-full opacity-10 animate-pulse"></div>
+        <div className="absolute bottom-32 right-10 w-12 h-12 bg-gradient-to-r from-primary to-copper rounded-full opacity-10 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-gold rounded-full opacity-20 animate-bounce delay-500"></div>
       </section>
 
       {/* Features Section */}
