@@ -227,7 +227,7 @@ export default function Index() {
               Taste our chef's carefully curated selection of exceptional dishes
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {menuHighlights.map((dish, index) => (
               <Card key={index} className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group overflow-hidden">
                 <CardContent className="p-0">
