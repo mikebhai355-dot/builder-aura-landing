@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { 
+import {
   ArrowLeft,
   Sparkles,
   Heart,
@@ -28,7 +28,8 @@ import {
   Award,
   Zap,
   Plus,
-  Minus
+  Minus,
+  Eye
 } from 'lucide-react';
 
 interface MenuItem {
