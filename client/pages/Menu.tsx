@@ -555,7 +555,7 @@ export default function Menu() {
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                  Butterfly Garden Menu
+                  Butterfly Garden
                 </span>
               </div>
             </Link>
