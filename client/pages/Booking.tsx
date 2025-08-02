@@ -26,11 +26,11 @@ import {
 } from 'lucide-react';
 
 const decorationOptions = [
-  { id: 'flowers', name: 'Fresh Flower Arrangements', price: 50, icon: Flower },
-  { id: 'balloons', name: 'Elegant Balloon Setup', price: 30, icon: PartyPopper },
-  { id: 'music', name: 'Live Music Performance', price: 200, icon: Music },
-  { id: 'cake', name: 'Custom Celebration Cake', price: 75, icon: Cake },
-  { id: 'romantic', name: 'Romantic Candle Setup', price: 40, icon: Heart },
+  { id: 'flowers', name: 'Fresh Flower Arrangements', price: 3500, icon: Flower },
+  { id: 'balloons', name: 'Elegant Balloon Setup', price: 2000, icon: PartyPopper },
+  { id: 'music', name: 'Live Music Performance', price: 15000, icon: Music },
+  { id: 'cake', name: 'Custom Celebration Cake', price: 5500, icon: Cake },
+  { id: 'romantic', name: 'Romantic Candle Setup', price: 3000, icon: Heart },
 ];
 
 const timeSlots = [
@@ -366,7 +366,7 @@ export default function Booking() {
                                       {decoration.name}
                                     </label>
                                     <div className="text-sm text-muted-foreground">
-                                      +${decoration.price}
+                                      +₹{decoration.price}
                                     </div>
                                   </div>
                                 </div>
@@ -473,7 +473,7 @@ export default function Booking() {
                               {selectedDecorations.map((decoration) => (
                                 <div key={decoration.id} className="flex justify-between text-sm">
                                   <span>{decoration.name}</span>
-                                  <span>${decoration.price}</span>
+                                  <span>₹{decoration.price}</span>
                                 </div>
                               ))}
                             </div>
@@ -481,7 +481,7 @@ export default function Booking() {
                           <div className="border-t pt-4">
                             <div className="flex justify-between font-semibold text-lg">
                               <span>Additional Services:</span>
-                              <span className="text-primary">${totalPrice}</span>
+                              <span className="text-primary">₹{totalPrice}</span>
                             </div>
                           </div>
                         </>
