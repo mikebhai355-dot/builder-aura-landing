@@ -14,7 +14,10 @@ import {
   Heart,
   Sparkles,
   ArrowRight,
-  MessageSquare
+  MessageSquare,
+  Instagram,
+  Facebook,
+  Map
 } from 'lucide-react';
 
 const menuHighlights = [
