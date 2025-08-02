@@ -87,11 +87,11 @@ export default function Index() {
                 Butterfly Garden Restaurant & Cafe
               </span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-foreground hover:text-primary transition-colors">Home</Link>
-              <Link to="/menu" className="text-foreground hover:text-primary transition-colors">Menu</Link>
-              <Link to="/booking" className="text-foreground hover:text-primary transition-colors">Reservations</Link>
-              <Link to="/contact" className="text-foreground hover:text-primary transition-colors">Contact</Link>
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <Link to="/" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Home</Link>
+              <Link to="/menu" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Menu</Link>
+              <Link to="/booking" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Reservations</Link>
+              <Link to="/contact" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Contact</Link>
             </div>
             <Link to="/booking">
               <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
