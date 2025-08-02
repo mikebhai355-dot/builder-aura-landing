@@ -608,7 +608,7 @@ export default function Menu() {
                           <div key={cartItem.item.id} className="flex items-center justify-between p-3 border rounded-lg">
                             <div className="flex-1">
                               <h4 className="font-medium">{cartItem.item.name}</h4>
-                              <p className="text-sm text-muted-foreground">₹{cartItem.item.price}</p>
+                              <p className="text-sm text-muted-foreground">���{cartItem.item.price}</p>
                             </div>
                             <div className="flex items-center space-x-2">
                               <Button
@@ -799,7 +799,7 @@ export default function Menu() {
                   </div>
 
                   {/* Item Details */}
-                  <div className="flex-1 p-6">
+                  <div className="flex-1 p-4 md:p-6">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
