@@ -28,7 +28,7 @@ import {
 
 const contactInfo = {
   phone: '7992240355',
-  email: 'hello@butterflyrestaurant.com',
+  email: 'hello@butterflygarden.com',
   address: 'Dumri, Gobarsahi, Muzaffarpur, Bihar 842001',
   hours: {
     'Monday - Thursday': '5:00 PM - 10:00 PM',
@@ -118,8 +118,8 @@ export default function Contact() {
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                  Butterfly
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
+                  Butterfly Garden
                 </span>
               </div>
             </Link>
@@ -390,7 +390,7 @@ export default function Contact() {
         <section className="mt-16 text-center">
           <Card className="bg-gradient-to-r from-primary to-gold text-primary-foreground border-0">
             <CardContent className="p-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Visit Butterfly?</h2>
+              <h2 className="text-2xl md:text-4xl font-bold mb-4">Ready to Visit Butterfly Garden?</h2>
               <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
                 Join us for an unforgettable culinary experience in the heart of the city
               </p>
