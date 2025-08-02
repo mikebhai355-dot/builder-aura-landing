@@ -54,9 +54,14 @@ export default function Index() {
       <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b border-gold/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-primary-foreground" />
+            <div className="flex items-center space-x-3">
+              {/* Logo - using placeholder, can be replaced with actual PNG */}
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
+                  <Sparkles className="w-7 h-7 text-primary-foreground" />
+                </div>
+                {/* Small butterfly accent */}
+                <div className="absolute -top-1 -right-1 text-sm">🦋</div>
               </div>
               <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
                 Butterfly Garden
