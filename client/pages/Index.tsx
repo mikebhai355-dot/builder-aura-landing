@@ -439,12 +439,36 @@ export default function Index() {
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <div className="space-y-2 text-background/80">
-                <Link to="/menu" className="block hover:text-gold transition-colors">Menu</Link>
-                <Link to="/booking" className="block hover:text-gold transition-colors">Reservations</Link>
-                <Link to="/contact" className="block hover:text-gold transition-colors">Contact</Link>
-                <Link to="/admin" className="block hover:text-gold transition-colors">Admin</Link>
+              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-4">
+                  <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">W</span>
+                    </div>
+                    <span>WhatsApp</span>
+                  </a>
+                  <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
+                    <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">I</span>
+                    </div>
+                    <span>Instagram</span>
+                  </a>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">F</span>
+                    </div>
+                    <span>Facebook</span>
+                  </a>
+                  <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-background/80 hover:text-gold transition-colors">
+                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">M</span>
+                    </div>
+                    <span>Google Maps</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
