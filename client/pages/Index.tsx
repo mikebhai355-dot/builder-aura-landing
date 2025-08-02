@@ -83,8 +83,8 @@ export default function Index() {
               <div className="w-10 h-10 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-primary-foreground" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                Butterfly
+              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
+                Butterfly Garden Restaurant & Cafe
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -112,9 +112,10 @@ export default function Index() {
                 <Sparkles className="w-4 h-4 mr-2" />
                 Fine Dining Experience
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-gold to-copper bg-clip-text text-transparent leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-gold to-copper bg-clip-text text-transparent leading-tight">
                 Welcome to<br />
-                Butterfly
+                Butterfly Garden<br />
+                <span className="text-2xl md:text-4xl lg:text-5xl">Restaurant & Cafe</span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
                 Where culinary artistry meets elegant ambiance. Experience flavors that dance on your palate like butterflies in a garden.
@@ -146,7 +147,7 @@ export default function Index() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Why Choose Butterfly?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">Why Choose Butterfly Garden?</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               We offer more than just a meal - we create unforgettable experiences
             </p>
@@ -287,7 +288,7 @@ export default function Index() {
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold">Butterfly</span>
+                <span className="text-lg md:text-xl font-bold">Butterfly Garden</span>
               </div>
               <p className="text-background/80 mb-4">
                 Creating exceptional dining experiences with passion and artistry.
@@ -321,7 +322,7 @@ export default function Index() {
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-            <p>&copy; 2024 Butterfly Restaurant. All rights reserved.</p>
+            <p>&copy; 2024 Butterfly Garden Restaurant & Cafe. All rights reserved.</p>
           </div>
         </div>
       </footer>
