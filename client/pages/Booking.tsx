@@ -165,7 +165,7 @@ export default function Booking() {
             </TabsList>
 
             <form onSubmit={handleSubmit}>
-              <div className="grid lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                 {/* Main Form */}
                 <div className="lg:col-span-2 space-y-6">
                   <TabsContent value="table" className="mt-0">
