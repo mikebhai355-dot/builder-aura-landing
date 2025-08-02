@@ -143,7 +143,7 @@ export default function Admin() {
     setMenuItems([
       {
         id: '1',
-        name: 'Butterfly Special Pasta',
+        name: 'Butterfly Garden Special Pasta',
         description: 'Fresh handmade pasta with truffle oil and wild mushrooms',
         price: 24,
         category: 'Main Course',
@@ -251,8 +251,8 @@ export default function Admin() {
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                  Butterfly Admin
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
+                  Butterfly Garden Admin
                 </span>
               </div>
             </Link>
@@ -542,7 +542,7 @@ export default function Admin() {
                       id="menuName"
                       value={newMenuItem.name}
                       onChange={(e) => setNewMenuItem({...newMenuItem, name: e.target.value})}
-                      placeholder="e.g., Butterfly Special Pasta"
+                      placeholder="e.g., Butterfly Garden Special"
                     />
                   </div>
                   <div>
