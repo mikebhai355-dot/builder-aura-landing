@@ -30,6 +30,7 @@ import {
   Cake,
   Flower,
   Map,
+  MapPin,
 } from "lucide-react";
 
 const decorationOptions = [
