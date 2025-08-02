@@ -641,51 +641,53 @@ export default function Menu() {
       <nav className="bg-background/80 backdrop-blur-md border-b border-gold/20 sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <ArrowLeft className="w-5 h-5" />
-              <div className="flex items-center space-x-3">
-                <div className="relative">
-                  <div className="w-10 h-10 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
-                    <Sparkles className="w-6 h-6 text-primary-foreground" />
+            <Link to="/" className="flex items-center space-x-2 min-w-0 flex-1">
+              <ArrowLeft className="w-5 h-5 shrink-0" />
+              <div className="flex items-center space-x-2 min-w-0">
+                <div className="relative shrink-0">
+                  <div className="w-8 md:w-10 h-8 md:h-10 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
+                    <Sparkles className="w-4 md:w-6 h-4 md:h-6 text-primary-foreground" />
                   </div>
                   <div className="absolute -top-1 -right-1 text-xs">🦋</div>
                 </div>
-                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
+                <span className="text-sm md:text-lg lg:text-xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent truncate">
                   Butterfly Garden
                 </span>
               </div>
             </Link>
-            <div className="flex items-center space-x-4">
-              {/* Delivery Mode Toggle */}
+            <div className="flex items-center space-x-2 md:space-x-4 shrink-0">
+              {/* Delivery Mode Toggle - Mobile Optimized */}
               <div className="flex border rounded-lg overflow-hidden">
                 <button
                   onClick={() => setDeliveryMode("dine-in")}
-                  className={`px-3 py-2 text-sm ${deliveryMode === "dine-in" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                  className={`px-2 md:px-3 py-2 text-xs md:text-sm ${deliveryMode === "dine-in" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
-                  Dine In
+                  <span className="hidden sm:inline">Dine In</span>
+                  <span className="sm:hidden">Dine</span>
                 </button>
                 <button
                   onClick={() => setDeliveryMode("delivery")}
-                  className={`px-3 py-2 text-sm ${deliveryMode === "delivery" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                  className={`px-2 md:px-3 py-2 text-xs md:text-sm ${deliveryMode === "delivery" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
-                  <Truck className="w-4 h-4 mr-1 inline" />
-                  Delivery
+                  <Truck className="w-3 md:w-4 h-3 md:h-4 sm:mr-1 inline" />
+                  <span className="hidden sm:inline">Delivery</span>
                 </button>
                 <button
                   onClick={() => setDeliveryMode("pickup")}
-                  className={`px-3 py-2 text-sm ${deliveryMode === "pickup" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                  className={`px-2 md:px-3 py-2 text-xs md:text-sm ${deliveryMode === "pickup" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
-                  Pickup
+                  <span className="hidden sm:inline">Pickup</span>
+                  <span className="sm:hidden">Pick</span>
                 </button>
               </div>
-              {/* Cart */}
+              {/* Cart - Fixed for mobile */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="relative">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Cart
+                  <Button variant="outline" className="relative min-w-0 shrink-0">
+                    <ShoppingCart className="w-4 h-4 sm:mr-2" />
+                    <span className="hidden sm:inline">Cart</span>
                     {getCartItemCount() > 0 && (
-                      <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground">
+                      <Badge className="absolute -top-2 -right-2 bg-primary text-primary-foreground min-w-[20px] h-5 text-xs flex items-center justify-center">
                         {getCartItemCount()}
                       </Badge>
                     )}
@@ -1170,7 +1172,7 @@ export default function Menu() {
                   <div className="p-3 bg-warm/30 rounded-lg">
                     <DollarSign className="w-5 h-5 mx-auto mb-1 text-primary" />
                     <div className="text-sm font-medium">
-                      ${selectedItem.price}
+                      ₹{selectedItem.price}
                     </div>
                     <div className="text-xs text-muted-foreground">Price</div>
                   </div>
