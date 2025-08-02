@@ -78,6 +78,18 @@ export default function Booking() {
     contactMethod: "sms",
   });
 
+  // Geolocation state
+  const [userLocation, setUserLocation] = useState(null);
+  const [locationPermission, setLocationPermission] = useState("prompt");
+  const [distanceToRestaurant, setDistanceToRestaurant] = useState(null);
+
+  // Restaurant location (Dumri, Gobarsahi, Muzaffarpur, Bihar)
+  const restaurantLocation = {
+    lat: 26.1197,
+    lng: 85.3906,
+    address: "Dumri, Gobarsahi, Muzaffarpur, Bihar 842001"
+  };
+
   const [selectedDecorations, setSelectedDecorations] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
