@@ -1,0 +1,32 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="butterflyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Butterfly Body -->
+  <ellipse cx="24" cy="24" rx="1.5" ry="12" fill="url(#butterflyGradient)"/>
+  
+  <!-- Left Wings -->
+  <path d="M22 15 C18 12, 12 14, 10 18 C8 22, 12 24, 16 22 C18 20, 20 18, 22 16 Z" fill="url(#butterflyGradient)" opacity="0.9"/>
+  <path d="M22 25 C18 28, 12 30, 10 34 C8 38, 12 40, 16 38 C18 36, 20 34, 22 32 Z" fill="url(#butterflyGradient)" opacity="0.8"/>
+  
+  <!-- Right Wings -->
+  <path d="M26 15 C30 12, 36 14, 38 18 C40 22, 36 24, 32 22 C30 20, 28 18, 26 16 Z" fill="url(#butterflyGradient)" opacity="0.9"/>
+  <path d="M26 25 C30 28, 36 30, 38 34 C40 38, 36 40, 32 38 C30 36, 28 34, 26 32 Z" fill="url(#butterflyGradient)" opacity="0.8"/>
+  
+  <!-- Wing Details -->
+  <circle cx="15" cy="18" r="2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="33" cy="18" r="2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="15" cy="32" r="1.5" fill="#ffffff" opacity="0.4"/>
+  <circle cx="33" cy="32" r="1.5" fill="#ffffff" opacity="0.4"/>
+  
+  <!-- Antennae -->
+  <path d="M22 12 Q20 8 18 6" stroke="url(#butterflyGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M26 12 Q28 8 30 6" stroke="url(#butterflyGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <circle cx="18" cy="6" r="1" fill="url(#butterflyGradient)"/>
+  <circle cx="30" cy="6" r="1" fill="url(#butterflyGradient)"/>
+</svg>
