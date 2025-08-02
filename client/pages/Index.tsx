@@ -154,14 +154,39 @@ export default function Index() {
           </div>
         </div>
         
-        {/* Animated Butterflies */}
+        {/* Animated Colorful Butterflies */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-10 text-4xl animate-[flutter_6s_ease-in-out_infinite] opacity-60">🦋</div>
-          <div className="absolute top-40 right-20 text-3xl animate-[flutter_8s_ease-in-out_infinite_2s] opacity-50">🦋</div>
-          <div className="absolute bottom-40 left-1/4 text-2xl animate-[flutter_10s_ease-in-out_infinite_4s] opacity-70">🦋</div>
-          <div className="absolute top-1/3 right-1/3 text-3xl animate-[flutter_7s_ease-in-out_infinite_1s] opacity-40">🦋</div>
-          <div className="absolute bottom-20 right-10 text-2xl animate-[flutter_9s_ease-in-out_infinite_3s] opacity-60">🦋</div>
-          <div className="absolute top-60 left-1/2 text-xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-50">��</div>
+          {/* Top area butterflies - avoiding header */}
+          <div className="absolute top-32 left-5 text-3xl animate-[flutter_6s_ease-in-out_infinite] opacity-70">
+            <span style={{color: '#FF6B6B'}}>🦋</span>
+          </div>
+          <div className="absolute top-28 right-16 text-2xl animate-[flutter_8s_ease-in-out_infinite_2s] opacity-60">
+            <span style={{color: '#4ECDC4'}}>🦋</span>
+          </div>
+
+          {/* Side butterflies - avoiding main content */}
+          <div className="absolute top-48 left-8 text-xl animate-[flutter_10s_ease-in-out_infinite_4s] opacity-50">
+            <span style={{color: '#45B7D1'}}>🦋</span>
+          </div>
+          <div className="absolute top-52 right-12 text-2xl animate-[flutter_7s_ease-in-out_infinite_1s] opacity-65">
+            <span style={{color: '#96CEB4'}}>🦋</span>
+          </div>
+
+          {/* Corner butterflies */}
+          <div className="absolute bottom-32 left-12 text-xl animate-[flutter_9s_ease-in-out_infinite_3s] opacity-55">
+            <span style={{color: '#FFEAA7'}}>🦋</span>
+          </div>
+          <div className="absolute bottom-28 right-8 text-2xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-60">
+            <span style={{color: '#DDA0DD'}}>🦋</span>
+          </div>
+
+          {/* Far edges - extra spacing from content */}
+          <div className="absolute top-72 left-4 text-lg animate-[flutter_11s_ease-in-out_infinite_1.5s] opacity-45">
+            <span style={{color: '#F39C12'}}>🦋</span>
+          </div>
+          <div className="absolute top-80 right-6 text-lg animate-[flutter_6.5s_ease-in-out_infinite_3.5s] opacity-50">
+            <span style={{color: '#E74C3C'}}>🦋</span>
+          </div>
         </div>
 
         {/* Floating Elements */}
