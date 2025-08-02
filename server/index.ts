@@ -38,5 +38,12 @@ export function createServer() {
   app.put("/api/bookings/status", updateBookingStatus);
   app.get("/api/bookings/:reference", getBookingByReference);
 
+  // Menu routes
+  app.get("/api/menu", getAllMenuItems);
+  app.post("/api/menu", createMenuItem);
+  app.put("/api/menu/:id", updateMenuItem);
+  app.delete("/api/menu/:id", deleteMenuItem);
+  app.put("/api/menu/:id/toggle", toggleMenuItemAvailability);
+
   return app;
 }
