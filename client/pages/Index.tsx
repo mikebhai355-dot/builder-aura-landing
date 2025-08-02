@@ -20,21 +20,21 @@ const menuHighlights = [
   {
     name: "Butterfly Special Pasta",
     description: "Fresh handmade pasta with truffle oil and wild mushrooms",
-    price: "$24",
+    price: "₹1,800",
     image: "🍝",
     category: "Main Course"
   },
   {
     name: "Golden Sunset Salmon",
     description: "Pan-seared Atlantic salmon with citrus glaze",
-    price: "$32",
+    price: "₹2,400",
     image: "🐟",
     category: "Seafood"
   },
   {
     name: "Garden Symphony Salad",
     description: "Fresh mixed greens with seasonal fruits and nuts",
-    price: "$18",
+    price: "₹1,350",
     image: "🥗",
     category: "Appetizer"
   }
@@ -302,7 +302,7 @@ export default function Index() {
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-4 h-4 mr-2" />
-                  123 Garden Street, Foodie District
+                  Dumri, Gobarsahi, Muzaffarpur, Bihar
                 </div>
                 <div className="flex items-center">
                   <Clock className="w-4 h-4 mr-2" />
