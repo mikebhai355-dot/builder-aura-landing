@@ -74,13 +74,15 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              {/* Logo - using placeholder, can be replaced with actual PNG */}
+              {/* Logo - Custom SVG */}
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
-                  <Sparkles className="w-7 h-7 text-primary-foreground" />
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md hover-glow transition-all duration-300">
+                  <img src="/butterfly-logo.svg" alt="Butterfly Garden Logo" className="w-8 h-8" />
                 </div>
-                {/* Small butterfly accent */}
-                <div className="absolute -top-1 -right-1 text-sm">🦋</div>
+                {/* Floating decorative elements */}
+                <div className="absolute -top-2 -right-2 animate-pulse">
+                  <img src="/leaf-decoration.svg" alt="" className="w-4 h-4 opacity-70" />
+                </div>
               </div>
               <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
                 Butterfly Garden
@@ -301,9 +303,12 @@ export default function Index() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group glass-effect hover-glow">
+              <CardContent className="p-4 md:p-6 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-20">
+                  <img src="/chef-hat.svg" alt="" className="w-6 h-6" />
+                </div>
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <ChefHat className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Expert Chefs</h3>
@@ -313,9 +318,12 @@ export default function Index() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-gold to-copper rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group glass-effect hover-glow">
+              <CardContent className="p-4 md:p-6 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-20 animate-parallaxFloat">
+                  <img src="/butterfly-logo.svg" alt="" className="w-6 h-6" />
+                </div>
+                <div className="w-16 h-16 bg-gradient-to-r from-gold to-copper rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Sparkles className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Elegant Ambiance</h3>
@@ -325,9 +333,12 @@ export default function Index() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group glass-effect hover-glow">
+              <CardContent className="p-4 md:p-6 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-20">
+                  <img src="/leaf-decoration.svg" alt="" className="w-6 h-6" />
+                </div>
+                <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Heart className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
@@ -339,9 +350,12 @@ export default function Index() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group glass-effect hover-glow">
+              <CardContent className="p-4 md:p-6 text-center relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-20 animate-pulse">
+                  <img src="/leaf-decoration.svg" alt="" className="w-6 h-6" />
+                </div>
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <Star className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
@@ -600,8 +614,8 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-primary-foreground" />
+                <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center shadow-md">
+                  <img src="/butterfly-logo.svg" alt="Butterfly Garden" className="w-5 h-5" />
                 </div>
                 <span className="text-lg md:text-xl font-bold">
                   Butterfly Garden
