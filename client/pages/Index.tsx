@@ -84,7 +84,7 @@ export default function Index() {
                 <Sparkles className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent">
-                Butterfly Garden Restaurant & Cafe
+                Butterfly Garden
               </span>
             </div>
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
@@ -93,11 +93,28 @@ export default function Index() {
               <Link to="/booking" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Reservations</Link>
               <Link to="/contact" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Contact</Link>
             </div>
-            <Link to="/booking">
-              <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
-                Book Table
-              </Button>
-            </Link>
+            <div className="flex items-center space-x-3">
+              {/* Social Media Buttons */}
+              <div className="flex items-center space-x-2">
+                <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors">
+                  <span className="text-white text-sm font-bold">W</span>
+                </a>
+                <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
+                  <span className="text-white text-sm font-bold">I</span>
+                </a>
+                <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
+                  <span className="text-white text-sm font-bold">F</span>
+                </a>
+                <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
+                  <span className="text-white text-sm font-bold">M</span>
+                </a>
+              </div>
+              <Link to="/booking">
+                <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
+                  Book Table
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -144,7 +161,7 @@ export default function Index() {
           <div className="absolute bottom-40 left-1/4 text-2xl animate-[flutter_10s_ease-in-out_infinite_4s] opacity-70">🦋</div>
           <div className="absolute top-1/3 right-1/3 text-3xl animate-[flutter_7s_ease-in-out_infinite_1s] opacity-40">🦋</div>
           <div className="absolute bottom-20 right-10 text-2xl animate-[flutter_9s_ease-in-out_infinite_3s] opacity-60">🦋</div>
-          <div className="absolute top-60 left-1/2 text-xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-50">🦋</div>
+          <div className="absolute top-60 left-1/2 text-xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-50">��</div>
         </div>
 
         {/* Floating Elements */}
