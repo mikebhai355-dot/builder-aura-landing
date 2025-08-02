@@ -66,18 +66,11 @@ export const createBooking: RequestHandler = async (req, res) => {
   try {
     const bookingData: BookingData = req.body;
 
-    // Validate required fields
-    if (
-      !bookingData.name ||
-      !bookingData.email ||
-      !bookingData.phone ||
-      !bookingData.date ||
-      !bookingData.time ||
-      !bookingData.guests
-    ) {
+    // Validate required fields (only name and phone are mandatory)
+    if (!bookingData.name || !bookingData.phone) {
       return res.status(400).json({
         success: false,
-        message: "Missing required fields",
+        message: "Missing required fields: name and phone number are required",
       } as BookingResponse);
     }
 
