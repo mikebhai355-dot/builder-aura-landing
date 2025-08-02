@@ -422,22 +422,7 @@ export default function Booking() {
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="phone">Phone Number *</Label>
-                            <Input
-                              id="phone"
-                              type="tel"
-                              value={formData.phone}
-                              onChange={(e) =>
-                                setFormData({
-                                  ...formData,
-                                  phone: e.target.value,
-                                })
-                              }
-                              required
-                            />
-                          </div>
-                          <div>
-                            <Label htmlFor="guests">Number of Guests *</Label>
+                            <Label htmlFor="guests">Number of Guests (Optional)</Label>
                             <Select
                               value={formData.guests}
                               onValueChange={(value) =>
@@ -445,7 +430,7 @@ export default function Booking() {
                               }
                             >
                               <SelectTrigger>
-                                <SelectValue placeholder="Select guests" />
+                                <SelectValue placeholder="Select guests (optional)" />
                               </SelectTrigger>
                               <SelectContent>
                                 {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
@@ -455,6 +440,18 @@ export default function Booking() {
                                 ))}
                               </SelectContent>
                             </Select>
+                          </div>
+                          <div>
+                            <Label htmlFor="date">Reservation Date (Optional)</Label>
+                            <Input
+                              id="date"
+                              type="date"
+                              value={formData.date}
+                              onChange={(e) =>
+                                setFormData({ ...formData, date: e.target.value })
+                              }
+                              min={new Date().toISOString().split("T")[0]}
+                            />
                           </div>
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
