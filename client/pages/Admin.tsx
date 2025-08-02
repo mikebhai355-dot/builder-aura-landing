@@ -168,15 +168,15 @@ export default function Admin() {
 
   const loadMenuItems = async () => {
     try {
-      const response = await fetch('/api/menu');
+      const response = await fetch("/api/menu");
       const data = await response.json();
       if (data.success) {
         setMenuItems(data.items);
       } else {
-        console.error('Failed to load menu items:', data.message);
+        console.error("Failed to load menu items:", data.message);
       }
     } catch (error) {
-      console.error('Error loading menu items:', error);
+      console.error("Error loading menu items:", error);
     }
   };
 

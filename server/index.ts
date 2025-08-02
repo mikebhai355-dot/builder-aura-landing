@@ -13,7 +13,7 @@ import {
   createMenuItem,
   updateMenuItem,
   deleteMenuItem,
-  toggleMenuItemAvailability
+  toggleMenuItemAvailability,
 } from "./routes/menu";
 
 export function createServer() {

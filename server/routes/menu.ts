@@ -56,7 +56,8 @@ let menuItems: MenuItem[] = [
   {
     id: "3",
     name: "Royal Butter Chicken",
-    description: "Tender chicken in rich tomato cream sauce with aromatic spices",
+    description:
+      "Tender chicken in rich tomato cream sauce with aromatic spices",
     price: 2200,
     category: "North Indian",
     available: true,
@@ -70,7 +71,8 @@ let menuItems: MenuItem[] = [
   {
     id: "4",
     name: "Crispy Chicken Burger",
-    description: "Juicy fried chicken breast with lettuce, tomato, and special sauce",
+    description:
+      "Juicy fried chicken breast with lettuce, tomato, and special sauce",
     price: 1450,
     category: "Fast Food",
     available: true,
@@ -80,7 +82,7 @@ let menuItems: MenuItem[] = [
     tags: ["Quick Bite", "Popular"],
     createdAt: new Date(),
     updatedAt: new Date(),
-  }
+  },
 ];
 
 let menuCounter = 5;
@@ -91,14 +93,18 @@ export const getAllMenuItems: RequestHandler = async (req, res) => {
     res.json({
       success: true,
       message: "Menu items retrieved successfully",
-      items: menuItems.sort((a, b) => new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime())
+      items: menuItems.sort(
+        (a, b) =>
+          new Date(b.updatedAt || 0).getTime() -
+          new Date(a.updatedAt || 0).getTime(),
+      ),
     } as MenuResponse);
   } catch (error) {
     console.error("Error fetching menu items:", error);
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      items: []
+      items: [],
     } as MenuResponse);
   }
 };
@@ -106,13 +112,18 @@ export const getAllMenuItems: RequestHandler = async (req, res) => {
 // Create new menu item
 export const createMenuItem: RequestHandler = async (req, res) => {
   try {
-    const itemData: Omit<MenuItem, 'id' | 'createdAt' | 'updatedAt'> = req.body;
-    
+    const itemData: Omit<MenuItem, "id" | "createdAt" | "updatedAt"> = req.body;
+
     // Validate required fields
-    if (!itemData.name || !itemData.description || !itemData.price || !itemData.category) {
+    if (
+      !itemData.name ||
+      !itemData.description ||
+      !itemData.price ||
+      !itemData.category
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Missing required fields: name, description, price, category"
+        message: "Missing required fields: name, description, price, category",
       } as MenuResponse);
     }
 
@@ -128,14 +139,13 @@ export const createMenuItem: RequestHandler = async (req, res) => {
     res.json({
       success: true,
       message: "Menu item created successfully",
-      item: newItem
+      item: newItem,
     } as MenuResponse);
-
   } catch (error) {
     console.error("Error creating menu item:", error);
     res.status(500).json({
       success: false,
-      message: "Internal server error"
+      message: "Internal server error",
     } as MenuResponse);
   }
 };
@@ -145,12 +155,12 @@ export const updateMenuItem: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
     const updates: Partial<MenuItem> = req.body;
-    
-    const itemIndex = menuItems.findIndex(item => item.id === id);
+
+    const itemIndex = menuItems.findIndex((item) => item.id === id);
     if (itemIndex === -1) {
       return res.status(404).json({
         success: false,
-        message: "Menu item not found"
+        message: "Menu item not found",
       } as MenuResponse);
     }
 
@@ -163,14 +173,13 @@ export const updateMenuItem: RequestHandler = async (req, res) => {
     res.json({
       success: true,
       message: "Menu item updated successfully",
-      item: menuItems[itemIndex]
+      item: menuItems[itemIndex],
     } as MenuResponse);
-
   } catch (error) {
     console.error("Error updating menu item:", error);
     res.status(500).json({
       success: false,
-      message: "Internal server error"
+      message: "Internal server error",
     } as MenuResponse);
   }
 };
@@ -179,12 +188,12 @@ export const updateMenuItem: RequestHandler = async (req, res) => {
 export const deleteMenuItem: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    
-    const itemIndex = menuItems.findIndex(item => item.id === id);
+
+    const itemIndex = menuItems.findIndex((item) => item.id === id);
     if (itemIndex === -1) {
       return res.status(404).json({
         success: false,
-        message: "Menu item not found"
+        message: "Menu item not found",
       } as MenuResponse);
     }
 
@@ -193,14 +202,13 @@ export const deleteMenuItem: RequestHandler = async (req, res) => {
     res.json({
       success: true,
       message: "Menu item deleted successfully",
-      item: deletedItem
+      item: deletedItem,
     } as MenuResponse);
-
   } catch (error) {
     console.error("Error deleting menu item:", error);
     res.status(500).json({
       success: false,
-      message: "Internal server error"
+      message: "Internal server error",
     } as MenuResponse);
   }
 };
@@ -209,12 +217,12 @@ export const deleteMenuItem: RequestHandler = async (req, res) => {
 export const toggleMenuItemAvailability: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    
-    const itemIndex = menuItems.findIndex(item => item.id === id);
+
+    const itemIndex = menuItems.findIndex((item) => item.id === id);
     if (itemIndex === -1) {
       return res.status(404).json({
         success: false,
-        message: "Menu item not found"
+        message: "Menu item not found",
       } as MenuResponse);
     }
 
@@ -223,15 +231,14 @@ export const toggleMenuItemAvailability: RequestHandler = async (req, res) => {
 
     res.json({
       success: true,
-      message: `Menu item ${menuItems[itemIndex].available ? 'enabled' : 'disabled'} successfully`,
-      item: menuItems[itemIndex]
+      message: `Menu item ${menuItems[itemIndex].available ? "enabled" : "disabled"} successfully`,
+      item: menuItems[itemIndex],
     } as MenuResponse);
-
   } catch (error) {
     console.error("Error toggling menu item availability:", error);
     res.status(500).json({
       success: false,
-      message: "Internal server error"
+      message: "Internal server error",
     } as MenuResponse);
   }
 };

@@ -89,7 +89,7 @@ export default function Booking() {
   const restaurantLocation = {
     lat: 26.1197,
     lng: 85.3906,
-    address: "Dumri, Gobarsahi, Muzaffarpur, Bihar 842001"
+    address: "Dumri, Gobarsahi, Muzaffarpur, Bihar 842001",
   };
 
   const [selectedDecorations, setSelectedDecorations] = useState([]);
@@ -98,13 +98,15 @@ export default function Booking() {
   // Calculate distance between two points using Haversine formula
   const calculateDistance = (lat1, lng1, lat2, lng2) => {
     const R = 6371; // Radius of the Earth in kilometers
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
     const a =
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
     return distance;
   };
@@ -112,7 +114,7 @@ export default function Booking() {
   // Get user's current location
   const getUserLocation = () => {
     if (!navigator.geolocation) {
-      alert('Geolocation is not supported by this browser.');
+      alert("Geolocation is not supported by this browser.");
       return;
     }
 
@@ -122,7 +124,7 @@ export default function Booking() {
       (position) => {
         const userPos = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longitude,
         };
         setUserLocation(userPos);
         setLocationPermission("granted");
@@ -132,23 +134,24 @@ export default function Booking() {
           userPos.lat,
           userPos.lng,
           restaurantLocation.lat,
-          restaurantLocation.lng
+          restaurantLocation.lng,
         );
         setDistanceToRestaurant(distance.toFixed(1));
       },
       (error) => {
-        console.error('Error getting location:', error);
+        console.error("Error getting location:", error);
         setLocationPermission("denied");
-        let errorMessage = 'Unable to retrieve your location.';
-        switch(error.code) {
+        let errorMessage = "Unable to retrieve your location.";
+        switch (error.code) {
           case error.PERMISSION_DENIED:
-            errorMessage = 'Location access denied. You can still make a booking without location.';
+            errorMessage =
+              "Location access denied. You can still make a booking without location.";
             break;
           case error.POSITION_UNAVAILABLE:
-            errorMessage = 'Location information is unavailable.';
+            errorMessage = "Location information is unavailable.";
             break;
           case error.TIMEOUT:
-            errorMessage = 'Location request timed out.';
+            errorMessage = "Location request timed out.";
             break;
         }
         alert(errorMessage);
@@ -156,8 +159,8 @@ export default function Booking() {
       {
         enableHighAccuracy: true,
         timeout: 10000,
-        maximumAge: 300000 // 5 minutes
-      }
+        maximumAge: 300000, // 5 minutes
+      },
     );
   };
 
@@ -185,7 +188,7 @@ export default function Booking() {
 
     // Validate only required fields
     if (!formData.name.trim() || !formData.phone.trim()) {
-      alert('Please fill in your name and phone number');
+      alert("Please fill in your name and phone number");
       return;
     }
 
@@ -286,7 +289,9 @@ export default function Booking() {
                     <MapPin className="w-5 h-5 mr-2 text-primary" />
                     Restaurant Location
                   </h3>
-                  <p className="text-muted-foreground">{restaurantLocation.address}</p>
+                  <p className="text-muted-foreground">
+                    {restaurantLocation.address}
+                  </p>
                   {userLocation && distanceToRestaurant && (
                     <div className="mt-2 flex items-center text-sm">
                       <span className="text-green-600 font-medium">
@@ -318,7 +323,9 @@ export default function Booking() {
                     </Button>
                   ) : (
                     <div className="text-center">
-                      <div className="text-sm text-green-600 font-medium">✅ Location detected</div>
+                      <div className="text-sm text-green-600 font-medium">
+                        ✅ Location detected
+                      </div>
                       <Button
                         onClick={getUserLocation}
                         variant="outline"
@@ -330,12 +337,15 @@ export default function Booking() {
                     </div>
                   )}
                   <a
-                    href={`https://maps.google.com/dir/${userLocation ? `${userLocation.lat},${userLocation.lng}` : ''}/${restaurantLocation.lat},${restaurantLocation.lng}`}
+                    href={`https://maps.google.com/dir/${userLocation ? `${userLocation.lat},${userLocation.lng}` : ""}/${restaurantLocation.lat},${restaurantLocation.lng}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <Button size="sm" className="bg-gradient-to-r from-primary to-gold w-full">
+                    <Button
+                      size="sm"
+                      className="bg-gradient-to-r from-primary to-gold w-full"
+                    >
                       <Map className="w-4 h-4 mr-2" />
                       Get Directions
                     </Button>
@@ -346,7 +356,9 @@ export default function Booking() {
               {locationPermission === "denied" && (
                 <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-sm text-yellow-800">
-                    📱 Location access was denied. You can still make a booking, or enable location in your browser settings for distance calculation.
+                    📱 Location access was denied. You can still make a booking,
+                    or enable location in your browser settings for distance
+                    calculation.
                   </p>
                 </div>
               )}
@@ -423,7 +435,9 @@ export default function Booking() {
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="guests">Number of Guests (Optional)</Label>
+                            <Label htmlFor="guests">
+                              Number of Guests (Optional)
+                            </Label>
                             <Select
                               value={formData.guests}
                               onValueChange={(value) =>
@@ -443,13 +457,18 @@ export default function Booking() {
                             </Select>
                           </div>
                           <div>
-                            <Label htmlFor="date">Reservation Date (Optional)</Label>
+                            <Label htmlFor="date">
+                              Reservation Date (Optional)
+                            </Label>
                             <Input
                               id="date"
                               type="date"
                               value={formData.date}
                               onChange={(e) =>
-                                setFormData({ ...formData, date: e.target.value })
+                                setFormData({
+                                  ...formData,
+                                  date: e.target.value,
+                                })
                               }
                               min={new Date().toISOString().split("T")[0]}
                             />

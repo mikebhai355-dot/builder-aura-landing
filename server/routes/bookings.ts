@@ -32,27 +32,43 @@ async function sendNotification(
 
   try {
     // Using a mock service for now - in production, integrate with Twilio
-    const response = await fetch("https://api.twilio.com/2010-04-01/Accounts/YOUR_ACCOUNT_SID/Messages.json", {
-      method: "POST",
-      headers: {
-        "Authorization": "Basic " + Buffer.from("YOUR_ACCOUNT_SID:YOUR_AUTH_TOKEN").toString("base64"),
-        "Content-Type": "application/x-www-form-urlencoded",
+    const response = await fetch(
+      "https://api.twilio.com/2010-04-01/Accounts/YOUR_ACCOUNT_SID/Messages.json",
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Basic " +
+            Buffer.from("YOUR_ACCOUNT_SID:YOUR_AUTH_TOKEN").toString("base64"),
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          From:
+            booking.contactMethod === "whatsapp"
+              ? "whatsapp:+14155238886"
+              : "+1234567890",
+          To:
+            booking.contactMethod === "whatsapp"
+              ? `whatsapp:+91${booking.phone}`
+              : `+91${booking.phone}`,
+          Body: message,
+        }),
       },
-      body: new URLSearchParams({
-        From: booking.contactMethod === "whatsapp" ? "whatsapp:+14155238886" : "+1234567890",
-        To: booking.contactMethod === "whatsapp" ? `whatsapp:+91${booking.phone}` : `+91${booking.phone}`,
-        Body: message,
-      }),
-    });
+    );
 
     if (response.ok) {
-      console.log(`✅ ${booking.contactMethod.toUpperCase()} notification sent successfully to ${booking.phone}`);
+      console.log(
+        `✅ ${booking.contactMethod.toUpperCase()} notification sent successfully to ${booking.phone}`,
+      );
     } else {
       throw new Error(`Failed to send ${booking.contactMethod} notification`);
     }
   } catch (error) {
     // Fallback to console log if API fails
-    console.log(`📱 ${booking.contactMethod.toUpperCase()} notification (fallback) to ${booking.phone}:`, message);
+    console.log(
+      `📱 ${booking.contactMethod.toUpperCase()} notification (fallback) to ${booking.phone}:`,
+      message,
+    );
 
     // You can also integrate with other services like:
     // - WhatsApp Business API
