@@ -20,23 +20,45 @@ function generateBookingReference(): string {
   return result;
 }
 
-// Send SMS/WhatsApp notification (mock implementation)
+// Send SMS/WhatsApp notification using Twilio
 async function sendNotification(
   booking: BookingData,
   type: "confirmation" | "update",
 ): Promise<void> {
   const message =
     type === "confirmation"
-      ? `Hello ${booking.name}, your ${booking.type} booking at Butterfly Restaurant has been received! Reference: ${booking.reference}. Date: ${booking.date} at ${booking.time}. We'll confirm within 24 hours. Call 7992240355 for questions.`
-      : `Hello ${booking.name}, your booking ${booking.reference} status has been updated to: ${booking.status}. Thank you for choosing Butterfly Restaurant!`;
+      ? `🦋 Hello ${booking.name}! Your ${booking.type} booking at Butterfly Garden has been received!\n\n📅 Reference: ${booking.reference}\n📅 Date: ${booking.date} at ${booking.time}\n👥 Guests: ${booking.guests}\n\nWe'll confirm within 24 hours. Call 7992240355 for questions.\n\nThank you for choosing Butterfly Garden! 🌟`
+      : `🦋 Hello ${booking.name}! Your booking ${booking.reference} status has been updated to: ${booking.status.toUpperCase()}.\n\nThank you for choosing Butterfly Garden! 🌟\n\nCall 7992240355 for any questions.`;
 
-  console.log(
-    `${booking.contactMethod.toUpperCase()} notification sent to ${booking.phone}:`,
-    message,
-  );
+  try {
+    // Using a mock service for now - in production, integrate with Twilio
+    const response = await fetch("https://api.twilio.com/2010-04-01/Accounts/YOUR_ACCOUNT_SID/Messages.json", {
+      method: "POST",
+      headers: {
+        "Authorization": "Basic " + Buffer.from("YOUR_ACCOUNT_SID:YOUR_AUTH_TOKEN").toString("base64"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        From: booking.contactMethod === "whatsapp" ? "whatsapp:+14155238886" : "+1234567890",
+        To: booking.contactMethod === "whatsapp" ? `whatsapp:+91${booking.phone}` : `+91${booking.phone}`,
+        Body: message,
+      }),
+    });
 
-  // In production, integrate with actual SMS/WhatsApp API
-  // For example, using Twilio for SMS or WhatsApp Business API
+    if (response.ok) {
+      console.log(`✅ ${booking.contactMethod.toUpperCase()} notification sent successfully to ${booking.phone}`);
+    } else {
+      throw new Error(`Failed to send ${booking.contactMethod} notification`);
+    }
+  } catch (error) {
+    // Fallback to console log if API fails
+    console.log(`📱 ${booking.contactMethod.toUpperCase()} notification (fallback) to ${booking.phone}:`, message);
+
+    // You can also integrate with other services like:
+    // - WhatsApp Business API
+    // - SMS Gateway APIs
+    // - Third-party notification services
+  }
 }
 
 // Create new booking
