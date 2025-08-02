@@ -166,34 +166,18 @@ export default function Admin() {
     }
   };
 
-  const loadMenuItems = () => {
-    // Mock data - in production, fetch from API
-    setMenuItems([
-      {
-        id: "1",
-        name: "Butterfly Garden Special Pasta",
-        description: "Fresh handmade pasta with truffle oil and wild mushrooms",
-        price: 24,
-        category: "Main Course",
-        available: true,
-      },
-      {
-        id: "2",
-        name: "Golden Sunset Salmon",
-        description: "Pan-seared Atlantic salmon with citrus glaze",
-        price: 32,
-        category: "Seafood",
-        available: true,
-      },
-      {
-        id: "3",
-        name: "Garden Symphony Salad",
-        description: "Fresh mixed greens with seasonal fruits and nuts",
-        price: 18,
-        category: "Appetizer",
-        available: false,
-      },
-    ]);
+  const loadMenuItems = async () => {
+    try {
+      const response = await fetch('/api/menu');
+      const data = await response.json();
+      if (data.success) {
+        setMenuItems(data.items);
+      } else {
+        console.error('Failed to load menu items:', data.message);
+      }
+    } catch (error) {
+      console.error('Error loading menu items:', error);
+    }
   };
 
   const loadPromoContent = () => {
