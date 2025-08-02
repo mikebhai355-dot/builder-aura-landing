@@ -102,11 +102,26 @@ export default function Contact() {
     inquiryType: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Contact form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you within 24 hours.");
+
+    // Create WhatsApp message
+    const whatsappMessage = `New inquiry from Butterfly Garden website:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Inquiry Type: ${formData.inquiryType}
+Subject: ${formData.subject}
+
+Message: ${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/917992240355?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    alert("Your message has been prepared for WhatsApp! We'll get back to you within 24 hours.");
     setFormData({
       name: "",
       email: "",
@@ -143,13 +158,15 @@ export default function Contact() {
                   Reserve Table
                 </Button>
               </Link>
-              <Button
-                variant="outline"
-                className="border-gold text-gold hover:bg-gold/10"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                {contactInfo.phone}
-              </Button>
+              <a href={`tel:${contactInfo.phone}`}>
+                <Button
+                  variant="outline"
+                  className="border-gold text-gold hover:bg-gold/10"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  {contactInfo.phone}
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -288,10 +305,10 @@ export default function Contact() {
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90"
+                    className="w-full bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 transform hover:scale-105 transition-all duration-300"
                   >
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Send via WhatsApp
                   </Button>
                 </form>
               </CardContent>
@@ -309,9 +326,9 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <div className="font-medium">Phone</div>
-                    <div className="text-muted-foreground">
+                    <a href={`tel:${contactInfo.phone}`} className="text-primary hover:underline">
                       {contactInfo.phone}
-                    </div>
+                    </a>
                     <div className="text-sm text-muted-foreground">
                       Available 24/7 for reservations
                     </div>
@@ -321,9 +338,9 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-muted-foreground">
+                    <a href={`mailto:${contactInfo.email}`} className="text-primary hover:underline">
                       {contactInfo.email}
-                    </div>
+                    </a>
                     <div className="text-sm text-muted-foreground">
                       We respond within 24 hours
                     </div>
