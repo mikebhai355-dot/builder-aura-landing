@@ -595,7 +595,7 @@ export default function Menu() {
                     )}
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md mx-4 md:mx-auto">
                   <DialogHeader>
                     <DialogTitle>Your Order</DialogTitle>
                   </DialogHeader>
@@ -608,7 +608,7 @@ export default function Menu() {
                           <div key={cartItem.item.id} className="flex items-center justify-between p-3 border rounded-lg">
                             <div className="flex-1">
                               <h4 className="font-medium">{cartItem.item.name}</h4>
-                              <p className="text-sm text-muted-foreground">���{cartItem.item.price}</p>
+                              <p className="text-sm text-muted-foreground">₹{cartItem.item.price}</p>
                             </div>
                             <div className="flex items-center space-x-2">
                               <Button
