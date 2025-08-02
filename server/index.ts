@@ -2,6 +2,12 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { 
+  createBooking, 
+  getAllBookings, 
+  updateBookingStatus, 
+  getBookingByReference 
+} from "./routes/bookings";
 
 export function createServer() {
   const app = express();
@@ -18,6 +24,12 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // Booking routes
+  app.post("/api/bookings", createBooking);
+  app.get("/api/bookings", getAllBookings);
+  app.put("/api/bookings/status", updateBookingStatus);
+  app.get("/api/bookings/:reference", getBookingByReference);
 
   return app;
 }
