@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   ArrowLeft,
   Sparkles,
@@ -29,8 +41,8 @@ import {
   Zap,
   Plus,
   Minus,
-  Eye
-} from 'lucide-react';
+  Eye,
+} from "lucide-react";
 
 interface MenuItem {
   id: string;
@@ -57,7 +69,7 @@ interface MenuItem {
     carbs: string;
     fat: string;
   };
-  availability: 'available' | 'soldOut' | 'limited';
+  availability: "available" | "soldOut" | "limited";
 }
 
 interface CartItem {
@@ -68,393 +80,462 @@ interface CartItem {
 
 const menuData: MenuItem[] = [
   {
-    id: '1',
-    name: 'Butterfly Special Pasta',
-    description: 'Fresh handmade pasta tossed with truffle oil, wild mushrooms, and aged parmesan. Finished with microgreens and a touch of black pepper.',
+    id: "1",
+    name: "Butterfly Special Pasta",
+    description:
+      "Fresh handmade pasta tossed with truffle oil, wild mushrooms, and aged parmesan. Finished with microgreens and a touch of black pepper.",
     price: 1800,
     originalPrice: 2100,
-    category: 'Main Course',
-    image: '🍝',
+    category: "Main Course",
+    image: "🍝",
     rating: 4.8,
     reviewCount: 234,
-    preparationTime: '15-20 min',
+    preparationTime: "15-20 min",
     calories: 450,
     isVeg: true,
     isSpicy: false,
     isSignature: true,
     isPopular: true,
     isFavorite: false,
-    tags: ['Chef\'s Special', 'Handmade', 'Organic'],
-    ingredients: ['Fresh Pasta', 'Truffle Oil', 'Wild Mushrooms', 'Parmesan', 'Microgreens'],
-    allergens: ['Gluten', 'Dairy'],
+    tags: ["Chef's Special", "Handmade", "Organic"],
+    ingredients: [
+      "Fresh Pasta",
+      "Truffle Oil",
+      "Wild Mushrooms",
+      "Parmesan",
+      "Microgreens",
+    ],
+    allergens: ["Gluten", "Dairy"],
     nutritionInfo: {
-      protein: '18g',
-      carbs: '45g',
-      fat: '12g'
+      protein: "18g",
+      carbs: "45g",
+      fat: "12g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '2',
-    name: 'Golden Sunset Salmon',
-    description: 'Pan-seared Atlantic salmon with citrus glaze, served with roasted vegetables and quinoa pilaf. A healthy and delicious choice.',
+    id: "2",
+    name: "Golden Sunset Salmon",
+    description:
+      "Pan-seared Atlantic salmon with citrus glaze, served with roasted vegetables and quinoa pilaf. A healthy and delicious choice.",
     price: 2400,
-    category: 'Seafood',
-    image: '🐟',
+    category: "Seafood",
+    image: "🐟",
     rating: 4.9,
     reviewCount: 189,
-    preparationTime: '18-25 min',
+    preparationTime: "18-25 min",
     calories: 380,
     isVeg: false,
     isSpicy: false,
     isSignature: true,
     isPopular: true,
     isFavorite: false,
-    tags: ['Heart Healthy', 'High Protein', 'Omega-3'],
-    ingredients: ['Atlantic Salmon', 'Citrus Glaze', 'Quinoa', 'Seasonal Vegetables'],
-    allergens: ['Fish'],
+    tags: ["Heart Healthy", "High Protein", "Omega-3"],
+    ingredients: [
+      "Atlantic Salmon",
+      "Citrus Glaze",
+      "Quinoa",
+      "Seasonal Vegetables",
+    ],
+    allergens: ["Fish"],
     nutritionInfo: {
-      protein: '35g',
-      carbs: '22g',
-      fat: '15g'
+      protein: "35g",
+      carbs: "22g",
+      fat: "15g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '3',
-    name: 'Garden Symphony Salad',
-    description: 'Fresh mixed greens with seasonal fruits, candied nuts, goat cheese, and our signature honey vinaigrette.',
+    id: "3",
+    name: "Garden Symphony Salad",
+    description:
+      "Fresh mixed greens with seasonal fruits, candied nuts, goat cheese, and our signature honey vinaigrette.",
     price: 1350,
-    category: 'Appetizer',
-    image: '🥗',
+    category: "Appetizer",
+    image: "🥗",
     rating: 4.6,
     reviewCount: 156,
-    preparationTime: '10-12 min',
+    preparationTime: "10-12 min",
     calories: 220,
     isVeg: true,
     isSpicy: false,
     isSignature: false,
     isPopular: false,
     isFavorite: false,
-    tags: ['Fresh', 'Seasonal', 'Light'],
-    ingredients: ['Mixed Greens', 'Seasonal Fruits', 'Goat Cheese', 'Candied Nuts'],
-    allergens: ['Dairy', 'Nuts'],
+    tags: ["Fresh", "Seasonal", "Light"],
+    ingredients: [
+      "Mixed Greens",
+      "Seasonal Fruits",
+      "Goat Cheese",
+      "Candied Nuts",
+    ],
+    allergens: ["Dairy", "Nuts"],
     nutritionInfo: {
-      protein: '8g',
-      carbs: '15g',
-      fat: '12g'
+      protein: "8g",
+      carbs: "15g",
+      fat: "12g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '4',
-    name: 'Spiced Lamb Tagine',
-    description: 'Slow-cooked Moroccan lamb with apricots, almonds, and aromatic spices. Served with fluffy couscous and fresh herbs.',
+    id: "4",
+    name: "Spiced Lamb Tagine",
+    description:
+      "Slow-cooked Moroccan lamb with apricots, almonds, and aromatic spices. Served with fluffy couscous and fresh herbs.",
     price: 2700,
-    category: 'Main Course',
-    image: '🍖',
+    category: "Main Course",
+    image: "🍖",
     rating: 4.7,
     reviewCount: 98,
-    preparationTime: '25-30 min',
+    preparationTime: "25-30 min",
     calories: 520,
     isVeg: false,
     isSpicy: true,
     isSignature: true,
     isPopular: false,
     isFavorite: false,
-    tags: ['Moroccan', 'Slow Cooked', 'Aromatic'],
-    ingredients: ['Lamb', 'Apricots', 'Almonds', 'Couscous', 'Moroccan Spices'],
-    allergens: ['Nuts'],
+    tags: ["Moroccan", "Slow Cooked", "Aromatic"],
+    ingredients: ["Lamb", "Apricots", "Almonds", "Couscous", "Moroccan Spices"],
+    allergens: ["Nuts"],
     nutritionInfo: {
-      protein: '42g',
-      carbs: '35g',
-      fat: '18g'
+      protein: "42g",
+      carbs: "35g",
+      fat: "18g",
     },
-    availability: 'limited'
+    availability: "limited",
   },
   {
-    id: '5',
-    name: 'Chocolate Butterfly Soufflé',
-    description: 'Decadent dark chocolate soufflé with molten center, served with vanilla bean ice cream and berry coulis.',
+    id: "5",
+    name: "Chocolate Butterfly Soufflé",
+    description:
+      "Decadent dark chocolate soufflé with molten center, served with vanilla bean ice cream and berry coulis.",
     price: 1050,
-    category: 'Dessert',
-    image: '🍫',
+    category: "Dessert",
+    image: "🍫",
     rating: 4.9,
     reviewCount: 312,
-    preparationTime: '20-25 min',
+    preparationTime: "20-25 min",
     calories: 340,
     isVeg: true,
     isSpicy: false,
     isSignature: true,
     isPopular: true,
     isFavorite: false,
-    tags: ['Signature Dessert', 'Made to Order', 'Instagram Famous'],
-    ingredients: ['Dark Chocolate', 'Vanilla Ice Cream', 'Fresh Berries', 'Eggs'],
-    allergens: ['Gluten', 'Dairy', 'Eggs'],
+    tags: ["Signature Dessert", "Made to Order", "Instagram Famous"],
+    ingredients: [
+      "Dark Chocolate",
+      "Vanilla Ice Cream",
+      "Fresh Berries",
+      "Eggs",
+    ],
+    allergens: ["Gluten", "Dairy", "Eggs"],
     nutritionInfo: {
-      protein: '6g',
-      carbs: '28g',
-      fat: '16g'
+      protein: "6g",
+      carbs: "28g",
+      fat: "16g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '6',
-    name: 'Artisan Pizza Margherita',
-    description: 'Wood-fired pizza with San Marzano tomatoes, fresh mozzarella, basil, and extra virgin olive oil on crispy thin crust.',
+    id: "6",
+    name: "Artisan Pizza Margherita",
+    description:
+      "Wood-fired pizza with San Marzano tomatoes, fresh mozzarella, basil, and extra virgin olive oil on crispy thin crust.",
     price: 1650,
-    category: 'Main Course',
-    image: '🍕',
+    category: "Main Course",
+    image: "🍕",
     rating: 4.5,
     reviewCount: 267,
-    preparationTime: '12-15 min',
+    preparationTime: "12-15 min",
     calories: 380,
     isVeg: true,
     isSpicy: false,
     isSignature: false,
     isPopular: true,
     isFavorite: false,
-    tags: ['Wood Fired', 'Traditional', 'Crispy'],
-    ingredients: ['Pizza Dough', 'San Marzano Tomatoes', 'Fresh Mozzarella', 'Basil'],
-    allergens: ['Gluten', 'Dairy'],
+    tags: ["Wood Fired", "Traditional", "Crispy"],
+    ingredients: [
+      "Pizza Dough",
+      "San Marzano Tomatoes",
+      "Fresh Mozzarella",
+      "Basil",
+    ],
+    allergens: ["Gluten", "Dairy"],
     nutritionInfo: {
-      protein: '15g',
-      carbs: '42g',
-      fat: '14g'
+      protein: "15g",
+      carbs: "42g",
+      fat: "14g",
     },
-    availability: 'available'
+    availability: "available",
   },
   // North Indian Dishes
   {
-    id: '7',
-    name: 'Butter Chicken',
-    description: 'Tender chicken cooked in a rich, creamy tomato-based sauce with aromatic spices and fresh herbs',
+    id: "7",
+    name: "Butter Chicken",
+    description:
+      "Tender chicken cooked in a rich, creamy tomato-based sauce with aromatic spices and fresh herbs",
     price: 2200,
-    category: 'North Indian',
-    image: '🍛',
+    category: "North Indian",
+    image: "🍛",
     rating: 4.8,
     reviewCount: 287,
-    preparationTime: '20-25 min',
+    preparationTime: "20-25 min",
     calories: 420,
     isVeg: false,
     isSpicy: true,
     isSignature: true,
     isPopular: true,
     isFavorite: false,
-    tags: ['Creamy', 'Traditional', 'Popular'],
-    ingredients: ['Chicken', 'Tomato Sauce', 'Cream', 'Butter', 'Indian Spices'],
-    allergens: ['Dairy'],
+    tags: ["Creamy", "Traditional", "Popular"],
+    ingredients: [
+      "Chicken",
+      "Tomato Sauce",
+      "Cream",
+      "Butter",
+      "Indian Spices",
+    ],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '28g',
-      carbs: '12g',
-      fat: '18g'
+      protein: "28g",
+      carbs: "12g",
+      fat: "18g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '8',
-    name: 'Paneer Tikka Masala',
-    description: 'Grilled cottage cheese cubes in a spiced tomato-cream curry, served with basmati rice',
+    id: "8",
+    name: "Paneer Tikka Masala",
+    description:
+      "Grilled cottage cheese cubes in a spiced tomato-cream curry, served with basmati rice",
     price: 1950,
-    category: 'North Indian',
-    image: '🧀',
+    category: "North Indian",
+    image: "🧀",
     rating: 4.7,
     reviewCount: 198,
-    preparationTime: '18-22 min',
+    preparationTime: "18-22 min",
     calories: 380,
     isVeg: true,
     isSpicy: true,
     isSignature: false,
     isPopular: true,
     isFavorite: false,
-    tags: ['Vegetarian', 'Protein Rich', 'Spicy'],
-    ingredients: ['Paneer', 'Tomatoes', 'Cream', 'Spices', 'Basmati Rice'],
-    allergens: ['Dairy'],
+    tags: ["Vegetarian", "Protein Rich", "Spicy"],
+    ingredients: ["Paneer", "Tomatoes", "Cream", "Spices", "Basmati Rice"],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '18g',
-      carbs: '25g',
-      fat: '16g'
+      protein: "18g",
+      carbs: "25g",
+      fat: "16g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '9',
-    name: 'Dal Makhani',
-    description: 'Slow-cooked black lentils with butter, cream and aromatic spices, a North Indian classic',
+    id: "9",
+    name: "Dal Makhani",
+    description:
+      "Slow-cooked black lentils with butter, cream and aromatic spices, a North Indian classic",
     price: 1650,
-    category: 'North Indian',
-    image: '🍲',
+    category: "North Indian",
+    image: "🍲",
     rating: 4.6,
     reviewCount: 156,
-    preparationTime: '25-30 min',
+    preparationTime: "25-30 min",
     calories: 320,
     isVeg: true,
     isSpicy: false,
     isSignature: true,
     isPopular: false,
     isFavorite: false,
-    tags: ['Comfort Food', 'Traditional', 'Creamy'],
-    ingredients: ['Black Lentils', 'Butter', 'Cream', 'Tomatoes', 'Spices'],
-    allergens: ['Dairy'],
+    tags: ["Comfort Food", "Traditional", "Creamy"],
+    ingredients: ["Black Lentils", "Butter", "Cream", "Tomatoes", "Spices"],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '14g',
-      carbs: '35g',
-      fat: '12g'
+      protein: "14g",
+      carbs: "35g",
+      fat: "12g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '10',
-    name: 'Biryani Special',
-    description: 'Fragrant basmati rice layered with marinated chicken and aromatic spices, served with raita',
+    id: "10",
+    name: "Biryani Special",
+    description:
+      "Fragrant basmati rice layered with marinated chicken and aromatic spices, served with raita",
     price: 2500,
-    category: 'North Indian',
-    image: '🍚',
+    category: "North Indian",
+    image: "🍚",
     rating: 4.9,
     reviewCount: 342,
-    preparationTime: '30-35 min',
+    preparationTime: "30-35 min",
     calories: 480,
     isVeg: false,
     isSpicy: true,
     isSignature: true,
     isPopular: true,
     isFavorite: false,
-    tags: ['Aromatic', 'Traditional', 'Festive'],
-    ingredients: ['Basmati Rice', 'Chicken', 'Yogurt', 'Saffron', 'Spices'],
-    allergens: ['Dairy'],
+    tags: ["Aromatic", "Traditional", "Festive"],
+    ingredients: ["Basmati Rice", "Chicken", "Yogurt", "Saffron", "Spices"],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '32g',
-      carbs: '45g',
-      fat: '15g'
+      protein: "32g",
+      carbs: "45g",
+      fat: "15g",
     },
-    availability: 'available'
+    availability: "available",
   },
   // Fast Food Items
   {
-    id: '11',
-    name: 'Crispy Chicken Burger',
-    description: 'Juicy fried chicken breast with lettuce, tomato, and special sauce in a brioche bun',
+    id: "11",
+    name: "Crispy Chicken Burger",
+    description:
+      "Juicy fried chicken breast with lettuce, tomato, and special sauce in a brioche bun",
     price: 1450,
-    category: 'Fast Food',
-    image: '🍔',
+    category: "Fast Food",
+    image: "🍔",
     rating: 4.5,
     reviewCount: 234,
-    preparationTime: '12-15 min',
+    preparationTime: "12-15 min",
     calories: 520,
     isVeg: false,
     isSpicy: false,
     isSignature: false,
     isPopular: true,
     isFavorite: false,
-    tags: ['Crispy', 'Quick Bite', 'Satisfying'],
-    ingredients: ['Chicken Breast', 'Brioche Bun', 'Lettuce', 'Tomato', 'Special Sauce'],
-    allergens: ['Gluten', 'Eggs'],
+    tags: ["Crispy", "Quick Bite", "Satisfying"],
+    ingredients: [
+      "Chicken Breast",
+      "Brioche Bun",
+      "Lettuce",
+      "Tomato",
+      "Special Sauce",
+    ],
+    allergens: ["Gluten", "Eggs"],
     nutritionInfo: {
-      protein: '25g',
-      carbs: '38g',
-      fat: '22g'
+      protein: "25g",
+      carbs: "38g",
+      fat: "22g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '12',
-    name: 'Loaded Cheese Fries',
-    description: 'Crispy golden fries topped with melted cheese, jalapeños, and tangy sauce',
+    id: "12",
+    name: "Loaded Cheese Fries",
+    description:
+      "Crispy golden fries topped with melted cheese, jalapeños, and tangy sauce",
     price: 950,
-    category: 'Fast Food',
-    image: '🍟',
+    category: "Fast Food",
+    image: "🍟",
     rating: 4.3,
     reviewCount: 187,
-    preparationTime: '8-10 min',
+    preparationTime: "8-10 min",
     calories: 420,
     isVeg: true,
     isSpicy: true,
     isSignature: false,
     isPopular: true,
     isFavorite: false,
-    tags: ['Cheesy', 'Shareable', 'Comfort Food'],
-    ingredients: ['Potato Fries', 'Cheese', 'Jalapeños', 'Tangy Sauce'],
-    allergens: ['Dairy'],
+    tags: ["Cheesy", "Shareable", "Comfort Food"],
+    ingredients: ["Potato Fries", "Cheese", "Jalapeños", "Tangy Sauce"],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '8g',
-      carbs: '45g',
-      fat: '18g'
+      protein: "8g",
+      carbs: "45g",
+      fat: "18g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '13',
-    name: 'Chicken Wings Platter',
-    description: 'Six pieces of spicy buffalo wings served with blue cheese dip and celery sticks',
+    id: "13",
+    name: "Chicken Wings Platter",
+    description:
+      "Six pieces of spicy buffalo wings served with blue cheese dip and celery sticks",
     price: 1750,
-    category: 'Fast Food',
-    image: '🍗',
+    category: "Fast Food",
+    image: "🍗",
     rating: 4.6,
     reviewCount: 198,
-    preparationTime: '15-18 min',
+    preparationTime: "15-18 min",
     calories: 380,
     isVeg: false,
     isSpicy: true,
     isSignature: false,
     isPopular: false,
     isFavorite: false,
-    tags: ['Spicy', 'Finger Food', 'Buffalo Style'],
-    ingredients: ['Chicken Wings', 'Buffalo Sauce', 'Blue Cheese', 'Celery'],
-    allergens: ['Dairy'],
+    tags: ["Spicy", "Finger Food", "Buffalo Style"],
+    ingredients: ["Chicken Wings", "Buffalo Sauce", "Blue Cheese", "Celery"],
+    allergens: ["Dairy"],
     nutritionInfo: {
-      protein: '28g',
-      carbs: '8g',
-      fat: '22g'
+      protein: "28g",
+      carbs: "8g",
+      fat: "22g",
     },
-    availability: 'available'
+    availability: "available",
   },
   {
-    id: '14',
-    name: 'Vegetarian Wrap',
-    description: 'Fresh vegetables, hummus, and falafel wrapped in a soft tortilla with mint yogurt',
+    id: "14",
+    name: "Vegetarian Wrap",
+    description:
+      "Fresh vegetables, hummus, and falafel wrapped in a soft tortilla with mint yogurt",
     price: 1250,
-    category: 'Fast Food',
-    image: '🌯',
+    category: "Fast Food",
+    image: "🌯",
     rating: 4.4,
     reviewCount: 145,
-    preparationTime: '10-12 min',
+    preparationTime: "10-12 min",
     calories: 340,
     isVeg: true,
     isSpicy: false,
     isSignature: false,
     isPopular: false,
     isFavorite: false,
-    tags: ['Healthy', 'Fresh', 'Mediterranean'],
-    ingredients: ['Tortilla', 'Falafel', 'Hummus', 'Fresh Vegetables', 'Mint Yogurt'],
-    allergens: ['Gluten', 'Dairy', 'Sesame'],
+    tags: ["Healthy", "Fresh", "Mediterranean"],
+    ingredients: [
+      "Tortilla",
+      "Falafel",
+      "Hummus",
+      "Fresh Vegetables",
+      "Mint Yogurt",
+    ],
+    allergens: ["Gluten", "Dairy", "Sesame"],
     nutritionInfo: {
-      protein: '12g',
-      carbs: '42g',
-      fat: '10g'
+      protein: "12g",
+      carbs: "42g",
+      fat: "10g",
     },
-    availability: 'available'
-  }
+    availability: "available",
+  },
 ];
 
 const deliveryZones = [
-  { area: 'Muzaffarpur City', time: '25-35 min', fee: 50 },
-  { area: 'Gobarsahi', time: '15-25 min', fee: 30 },
-  { area: 'Dumri', time: '10-20 min', fee: 20 },
-  { area: 'Nearby Areas', time: '40-50 min', fee: 80 }
+  { area: "Muzaffarpur City", time: "25-35 min", fee: 50 },
+  { area: "Gobarsahi", time: "15-25 min", fee: 30 },
+  { area: "Dumri", time: "10-20 min", fee: 20 },
+  { area: "Nearby Areas", time: "40-50 min", fee: 80 },
 ];
 
 export default function Menu() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>(menuData);
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>(menuData);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('popular');
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
-  const [deliveryMode, setDeliveryMode] = useState<'dine-in' | 'delivery' | 'pickup'>('dine-in');
+  const [deliveryMode, setDeliveryMode] = useState<
+    "dine-in" | "delivery" | "pickup"
+  >("dine-in");
 
-  const categories = ['All', 'Appetizer', 'Main Course', 'Seafood', 'North Indian', 'Fast Food', 'Dessert', 'Beverage'];
+  const categories = [
+    "All",
+    "Appetizer",
+    "Main Course",
+    "Seafood",
+    "North Indian",
+    "Fast Food",
+    "Dessert",
+    "Beverage",
+  ];
 
   useEffect(() => {
     filterAndSortItems();
@@ -464,35 +545,40 @@ export default function Menu() {
     let filtered = menuItems;
 
     // Filter by category
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter(item => item.category === selectedCategory);
+    if (selectedCategory !== "All") {
+      filtered = filtered.filter((item) => item.category === selectedCategory);
     }
 
     // Filter by search query
     if (searchQuery) {
-      filtered = filtered.filter(item =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      filtered = filtered.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.tags.some((tag) =>
+            tag.toLowerCase().includes(searchQuery.toLowerCase()),
+          ),
       );
     }
 
     // Sort items
     switch (sortBy) {
-      case 'popular':
+      case "popular":
         filtered.sort((a, b) => b.reviewCount - a.reviewCount);
         break;
-      case 'rating':
+      case "rating":
         filtered.sort((a, b) => b.rating - a.rating);
         break;
-      case 'price-low':
+      case "price-low":
         filtered.sort((a, b) => a.price - b.price);
         break;
-      case 'price-high':
+      case "price-high":
         filtered.sort((a, b) => b.price - a.price);
         break;
-      case 'prep-time':
-        filtered.sort((a, b) => parseInt(a.preparationTime) - parseInt(b.preparationTime));
+      case "prep-time":
+        filtered.sort(
+          (a, b) => parseInt(a.preparationTime) - parseInt(b.preparationTime),
+        );
         break;
       default:
         break;
@@ -502,21 +588,23 @@ export default function Menu() {
   };
 
   const toggleFavorite = (itemId: string) => {
-    setMenuItems(items =>
-      items.map(item =>
-        item.id === itemId ? { ...item, isFavorite: !item.isFavorite } : item
-      )
+    setMenuItems((items) =>
+      items.map((item) =>
+        item.id === itemId ? { ...item, isFavorite: !item.isFavorite } : item,
+      ),
     );
   };
 
   const addToCart = (item: MenuItem, quantity: number = 1) => {
-    setCart(currentCart => {
-      const existingItem = currentCart.find(cartItem => cartItem.item.id === item.id);
+    setCart((currentCart) => {
+      const existingItem = currentCart.find(
+        (cartItem) => cartItem.item.id === item.id,
+      );
       if (existingItem) {
-        return currentCart.map(cartItem =>
+        return currentCart.map((cartItem) =>
           cartItem.item.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
+            : cartItem,
         );
       } else {
         return [...currentCart, { item, quantity }];
@@ -526,16 +614,21 @@ export default function Menu() {
 
   const updateCartQuantity = (itemId: string, newQuantity: number) => {
     if (newQuantity <= 0) {
-      setCart(cart.filter(item => item.item.id !== itemId));
+      setCart(cart.filter((item) => item.item.id !== itemId));
     } else {
-      setCart(cart.map(item =>
-        item.item.id === itemId ? { ...item, quantity: newQuantity } : item
-      ));
+      setCart(
+        cart.map((item) =>
+          item.item.id === itemId ? { ...item, quantity: newQuantity } : item,
+        ),
+      );
     }
   };
 
   const getCartTotal = () => {
-    return cart.reduce((total, item) => total + (item.item.price * item.quantity), 0);
+    return cart.reduce(
+      (total, item) => total + item.item.price * item.quantity,
+      0,
+    );
   };
 
   const getCartItemCount = () => {
@@ -566,21 +659,21 @@ export default function Menu() {
               {/* Delivery Mode Toggle */}
               <div className="flex border rounded-lg overflow-hidden">
                 <button
-                  onClick={() => setDeliveryMode('dine-in')}
-                  className={`px-3 py-2 text-sm ${deliveryMode === 'dine-in' ? 'bg-primary text-primary-foreground' : 'bg-background'}`}
+                  onClick={() => setDeliveryMode("dine-in")}
+                  className={`px-3 py-2 text-sm ${deliveryMode === "dine-in" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
                   Dine In
                 </button>
                 <button
-                  onClick={() => setDeliveryMode('delivery')}
-                  className={`px-3 py-2 text-sm ${deliveryMode === 'delivery' ? 'bg-primary text-primary-foreground' : 'bg-background'}`}
+                  onClick={() => setDeliveryMode("delivery")}
+                  className={`px-3 py-2 text-sm ${deliveryMode === "delivery" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
                   <Truck className="w-4 h-4 mr-1 inline" />
                   Delivery
                 </button>
                 <button
-                  onClick={() => setDeliveryMode('pickup')}
-                  className={`px-3 py-2 text-sm ${deliveryMode === 'pickup' ? 'bg-primary text-primary-foreground' : 'bg-background'}`}
+                  onClick={() => setDeliveryMode("pickup")}
+                  className={`px-3 py-2 text-sm ${deliveryMode === "pickup" ? "bg-primary text-primary-foreground" : "bg-background"}`}
                 >
                   Pickup
                 </button>
@@ -604,28 +697,49 @@ export default function Menu() {
                   </DialogHeader>
                   <div className="space-y-4">
                     {cart.length === 0 ? (
-                      <p className="text-center text-muted-foreground py-8">Your cart is empty</p>
+                      <p className="text-center text-muted-foreground py-8">
+                        Your cart is empty
+                      </p>
                     ) : (
                       <>
                         {cart.map((cartItem) => (
-                          <div key={cartItem.item.id} className="flex items-center justify-between p-3 border rounded-lg">
+                          <div
+                            key={cartItem.item.id}
+                            className="flex items-center justify-between p-3 border rounded-lg"
+                          >
                             <div className="flex-1">
-                              <h4 className="font-medium">{cartItem.item.name}</h4>
-                              <p className="text-sm text-muted-foreground">₹{cartItem.item.price}</p>
+                              <h4 className="font-medium">
+                                {cartItem.item.name}
+                              </h4>
+                              <p className="text-sm text-muted-foreground">
+                                ₹{cartItem.item.price}
+                              </p>
                             </div>
                             <div className="flex items-center space-x-2">
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => updateCartQuantity(cartItem.item.id, cartItem.quantity - 1)}
+                                onClick={() =>
+                                  updateCartQuantity(
+                                    cartItem.item.id,
+                                    cartItem.quantity - 1,
+                                  )
+                                }
                               >
                                 <Minus className="w-3 h-3" />
                               </Button>
-                              <span className="w-8 text-center">{cartItem.quantity}</span>
+                              <span className="w-8 text-center">
+                                {cartItem.quantity}
+                              </span>
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => updateCartQuantity(cartItem.item.id, cartItem.quantity + 1)}
+                                onClick={() =>
+                                  updateCartQuantity(
+                                    cartItem.item.id,
+                                    cartItem.quantity + 1,
+                                  )
+                                }
                               >
                                 <Plus className="w-3 h-3" />
                               </Button>
@@ -661,9 +775,10 @@ export default function Menu() {
               Our Exquisite Menu
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Discover flavors that dance on your palate, crafted with passion and the finest ingredients
+              Discover flavors that dance on your palate, crafted with passion
+              and the finest ingredients
             </p>
-            
+
             {/* Restaurant Info */}
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <div className="flex items-center space-x-2">
@@ -684,19 +799,30 @@ export default function Menu() {
       </section>
 
       {/* Delivery Information */}
-      {deliveryMode === 'delivery' && (
+      {deliveryMode === "delivery" && (
         <section className="py-6 bg-blue-50 border-b">
           <div className="container mx-auto px-4">
             <div className="text-center mb-4">
-              <h3 className="text-lg font-semibold mb-2">🚚 Home Delivery Available</h3>
-              <p className="text-sm text-muted-foreground">Minimum order ₹1,500 • Free delivery on orders above ₹3,000</p>
+              <h3 className="text-lg font-semibold mb-2">
+                🚚 Home Delivery Available
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Minimum order ₹1,500 • Free delivery on orders above ₹3,000
+              </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               {deliveryZones.map((zone, index) => (
-                <div key={index} className="text-center p-3 bg-white rounded-lg shadow-sm">
+                <div
+                  key={index}
+                  className="text-center p-3 bg-white rounded-lg shadow-sm"
+                >
                   <div className="font-medium text-sm">{zone.area}</div>
-                  <div className="text-xs text-muted-foreground">{zone.time}</div>
-                  <div className="text-xs font-medium text-primary">₹{zone.fee}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {zone.time}
+                  </div>
+                  <div className="text-xs font-medium text-primary">
+                    ₹{zone.fee}
+                  </div>
                 </div>
               ))}
             </div>
@@ -729,7 +855,10 @@ export default function Menu() {
                 <SelectItem value="prep-time">Prep Time</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" onClick={() => setShowFilters(!showFilters)}>
+            <Button
+              variant="outline"
+              onClick={() => setShowFilters(!showFilters)}
+            >
               <Filter className="w-4 h-4 mr-2" />
               Filters
             </Button>
@@ -742,16 +871,18 @@ export default function Menu() {
             <CardContent className="p-4">
               <div className="flex flex-wrap gap-2">
                 <Button
-                  variant={selectedCategory === 'All' ? 'default' : 'outline'}
+                  variant={selectedCategory === "All" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setSelectedCategory('All')}
+                  onClick={() => setSelectedCategory("All")}
                 >
                   All Items
                 </Button>
                 {categories.slice(1).map((category) => (
                   <Button
                     key={category}
-                    variant={selectedCategory === category ? 'default' : 'outline'}
+                    variant={
+                      selectedCategory === category ? "default" : "outline"
+                    }
                     size="sm"
                     onClick={() => setSelectedCategory(category)}
                   >
@@ -764,10 +895,18 @@ export default function Menu() {
         )}
 
         {/* Menu Categories Tabs */}
-        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
+        <Tabs
+          value={selectedCategory}
+          onValueChange={setSelectedCategory}
+          className="mb-8"
+        >
           <TabsList className="grid w-full grid-cols-4 md:grid-cols-8 gap-1">
             {categories.map((category) => (
-              <TabsTrigger key={category} value={category} className="text-xs md:text-sm px-2 md:px-4">
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="text-xs md:text-sm px-2 md:px-4"
+              >
                 {category}
               </TabsTrigger>
             ))}
@@ -777,7 +916,10 @@ export default function Menu() {
         {/* Menu Items Grid */}
         <div className="grid gap-6">
           {filteredItems.map((item) => (
-            <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40">
+            <Card
+              key={item.id}
+              className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gold/20 hover:border-gold/40"
+            >
               <CardContent className="p-0">
                 <div className="flex flex-col md:flex-row">
                   {/* Item Image */}
@@ -788,16 +930,18 @@ export default function Menu() {
                       className="absolute top-3 right-3 p-2 bg-white/80 rounded-full hover:bg-white transition-colors"
                     >
                       <Heart
-                        className={`w-5 h-5 ${item.isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-400'}`}
+                        className={`w-5 h-5 ${item.isFavorite ? "fill-red-500 text-red-500" : "text-gray-400"}`}
                       />
                     </button>
-                    {item.availability === 'soldOut' && (
+                    {item.availability === "soldOut" && (
                       <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                         <Badge variant="destructive">Sold Out</Badge>
                       </div>
                     )}
-                    {item.availability === 'limited' && (
-                      <Badge className="absolute top-3 left-3 bg-orange-500">Limited</Badge>
+                    {item.availability === "limited" && (
+                      <Badge className="absolute top-3 left-3 bg-orange-500">
+                        Limited
+                      </Badge>
                     )}
                   </div>
 
@@ -807,15 +951,23 @@ export default function Menu() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-xl font-bold">{item.name}</h3>
-                          {item.isVeg && <Leaf className="w-4 h-4 text-green-600" />}
-                          {item.isSpicy && <Flame className="w-4 h-4 text-red-500" />}
-                          {item.isSignature && <Award className="w-4 h-4 text-gold" />}
+                          {item.isVeg && (
+                            <Leaf className="w-4 h-4 text-green-600" />
+                          )}
+                          {item.isSpicy && (
+                            <Flame className="w-4 h-4 text-red-500" />
+                          )}
+                          {item.isSignature && (
+                            <Award className="w-4 h-4 text-gold" />
+                          )}
                         </div>
                         <div className="flex items-center gap-4 mb-2">
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-gold fill-gold" />
                             <span className="font-medium">{item.rating}</span>
-                            <span className="text-sm text-muted-foreground">({item.reviewCount})</span>
+                            <span className="text-sm text-muted-foreground">
+                              ({item.reviewCount})
+                            </span>
                           </div>
                           <div className="flex items-center gap-1 text-sm text-muted-foreground">
                             <Clock className="w-4 h-4" />
@@ -833,10 +985,12 @@ export default function Menu() {
                         <div className="flex items-center gap-2">
                           {item.originalPrice && (
                             <span className="text-sm text-muted-foreground line-through">
-                            ₹{item.originalPrice}
-                          </span>
+                              ₹{item.originalPrice}
+                            </span>
                           )}
-                          <span className="text-2xl font-bold text-primary">₹{item.price}</span>
+                          <span className="text-2xl font-bold text-primary">
+                            ₹{item.price}
+                          </span>
                         </div>
                         {item.originalPrice && (
                           <Badge variant="destructive" className="text-xs">
@@ -846,14 +1000,28 @@ export default function Menu() {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{item.description}</p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {item.description}
+                    </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 mb-4">
-                      {item.isPopular && <Badge variant="secondary" className="text-xs">🔥 Popular</Badge>}
-                      {item.isSignature && <Badge variant="secondary" className="text-xs">⭐ Signature</Badge>}
+                      {item.isPopular && (
+                        <Badge variant="secondary" className="text-xs">
+                          🔥 Popular
+                        </Badge>
+                      )}
+                      {item.isSignature && (
+                        <Badge variant="secondary" className="text-xs">
+                          ⭐ Signature
+                        </Badge>
+                      )}
                       {item.tags.slice(0, 3).map((tag, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
+                        <Badge
+                          key={index}
+                          variant="outline"
+                          className="text-xs"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -863,7 +1031,11 @@ export default function Menu() {
                     <div className="flex items-center justify-between">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" onClick={() => setSelectedItem(item)}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setSelectedItem(item)}
+                          >
                             <Eye className="w-4 h-4 mr-2" />
                             View Details
                           </Button>
@@ -871,27 +1043,43 @@ export default function Menu() {
                       </Dialog>
 
                       <div className="flex items-center gap-2">
-                        {cart.find(cartItem => cartItem.item.id === item.id) ? (
+                        {cart.find(
+                          (cartItem) => cartItem.item.id === item.id,
+                        ) ? (
                           <div className="flex items-center gap-2">
                             <Button
                               size="sm"
                               variant="outline"
                               onClick={() => {
-                                const cartItem = cart.find(c => c.item.id === item.id);
-                                if (cartItem) updateCartQuantity(item.id, cartItem.quantity - 1);
+                                const cartItem = cart.find(
+                                  (c) => c.item.id === item.id,
+                                );
+                                if (cartItem)
+                                  updateCartQuantity(
+                                    item.id,
+                                    cartItem.quantity - 1,
+                                  );
                               }}
                             >
                               <Minus className="w-3 h-3" />
                             </Button>
                             <span className="w-8 text-center">
-                              {cart.find(cartItem => cartItem.item.id === item.id)?.quantity || 0}
+                              {cart.find(
+                                (cartItem) => cartItem.item.id === item.id,
+                              )?.quantity || 0}
                             </span>
                             <Button
                               size="sm"
                               variant="outline"
                               onClick={() => {
-                                const cartItem = cart.find(c => c.item.id === item.id);
-                                if (cartItem) updateCartQuantity(item.id, cartItem.quantity + 1);
+                                const cartItem = cart.find(
+                                  (c) => c.item.id === item.id,
+                                );
+                                if (cartItem)
+                                  updateCartQuantity(
+                                    item.id,
+                                    cartItem.quantity + 1,
+                                  );
                               }}
                             >
                               <Plus className="w-3 h-3" />
@@ -900,7 +1088,7 @@ export default function Menu() {
                         ) : (
                           <Button
                             onClick={() => addToCart(item)}
-                            disabled={item.availability === 'soldOut'}
+                            disabled={item.availability === "soldOut"}
                             className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90"
                           >
                             <Plus className="w-4 h-4 mr-2" />
@@ -918,14 +1106,23 @@ export default function Menu() {
 
         {/* Item Detail Modal */}
         {selectedItem && (
-          <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
+          <Dialog
+            open={!!selectedItem}
+            onOpenChange={() => setSelectedItem(null)}
+          >
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
                   {selectedItem.name}
-                  {selectedItem.isVeg && <Leaf className="w-5 h-5 text-green-600" />}
-                  {selectedItem.isSpicy && <Flame className="w-5 h-5 text-red-500" />}
-                  {selectedItem.isSignature && <Award className="w-5 h-5 text-gold" />}
+                  {selectedItem.isVeg && (
+                    <Leaf className="w-5 h-5 text-green-600" />
+                  )}
+                  {selectedItem.isSpicy && (
+                    <Flame className="w-5 h-5 text-red-500" />
+                  )}
+                  {selectedItem.isSignature && (
+                    <Award className="w-5 h-5 text-gold" />
+                  )}
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-6">
@@ -938,29 +1135,43 @@ export default function Menu() {
                     <div className="flex items-center gap-1">
                       <Star className="w-5 h-5 text-gold fill-gold" />
                       <span className="font-bold">{selectedItem.rating}</span>
-                      <span className="text-muted-foreground">({selectedItem.reviewCount} reviews)</span>
+                      <span className="text-muted-foreground">
+                        ({selectedItem.reviewCount} reviews)
+                      </span>
                     </div>
                   </div>
-                  <p className="text-lg text-muted-foreground">{selectedItem.description}</p>
+                  <p className="text-lg text-muted-foreground">
+                    {selectedItem.description}
+                  </p>
                 </div>
 
                 {/* Quick Info */}
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="p-3 bg-warm/30 rounded-lg">
                     <Clock className="w-5 h-5 mx-auto mb-1 text-primary" />
-                    <div className="text-sm font-medium">{selectedItem.preparationTime}</div>
-                    <div className="text-xs text-muted-foreground">Prep Time</div>
+                    <div className="text-sm font-medium">
+                      {selectedItem.preparationTime}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      Prep Time
+                    </div>
                   </div>
                   {selectedItem.calories && (
                     <div className="p-3 bg-warm/30 rounded-lg">
                       <Zap className="w-5 h-5 mx-auto mb-1 text-primary" />
-                      <div className="text-sm font-medium">{selectedItem.calories}</div>
-                      <div className="text-xs text-muted-foreground">Calories</div>
+                      <div className="text-sm font-medium">
+                        {selectedItem.calories}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Calories
+                      </div>
                     </div>
                   )}
                   <div className="p-3 bg-warm/30 rounded-lg">
                     <DollarSign className="w-5 h-5 mx-auto mb-1 text-primary" />
-                    <div className="text-sm font-medium">${selectedItem.price}</div>
+                    <div className="text-sm font-medium">
+                      ${selectedItem.price}
+                    </div>
                     <div className="text-xs text-muted-foreground">Price</div>
                   </div>
                 </div>
@@ -981,10 +1192,14 @@ export default function Menu() {
                 {/* Nutrition Info */}
                 {selectedItem.nutritionInfo && (
                   <div>
-                    <h4 className="font-semibold mb-2">Nutrition Information</h4>
+                    <h4 className="font-semibold mb-2">
+                      Nutrition Information
+                    </h4>
                     <div className="grid grid-cols-3 gap-4 text-sm">
                       <div className="text-center p-2 bg-green-50 rounded">
-                        <div className="font-medium text-green-700">Protein</div>
+                        <div className="font-medium text-green-700">
+                          Protein
+                        </div>
                         <div>{selectedItem.nutritionInfo.protein}</div>
                       </div>
                       <div className="text-center p-2 bg-blue-50 rounded">
@@ -1002,10 +1217,16 @@ export default function Menu() {
                 {/* Allergens */}
                 {selectedItem.allergens.length > 0 && (
                   <div>
-                    <h4 className="font-semibold mb-2 text-red-600">⚠️ Allergen Information</h4>
+                    <h4 className="font-semibold mb-2 text-red-600">
+                      ⚠️ Allergen Information
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedItem.allergens.map((allergen, index) => (
-                        <Badge key={index} variant="destructive" className="text-xs">
+                        <Badge
+                          key={index}
+                          variant="destructive"
+                          className="text-xs"
+                        >
                           {allergen}
                         </Badge>
                       ))}
@@ -1015,13 +1236,15 @@ export default function Menu() {
 
                 {/* Add to Cart */}
                 <div className="flex items-center justify-between pt-4 border-t">
-                  <div className="text-2xl font-bold text-primary">₹{selectedItem.price}</div>
+                  <div className="text-2xl font-bold text-primary">
+                    ₹{selectedItem.price}
+                  </div>
                   <Button
                     onClick={() => {
                       addToCart(selectedItem);
                       setSelectedItem(null);
                     }}
-                    disabled={selectedItem.availability === 'soldOut'}
+                    disabled={selectedItem.availability === "soldOut"}
                     className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90"
                   >
                     <Plus className="w-4 h-4 mr-2" />
@@ -1041,16 +1264,25 @@ export default function Menu() {
             Ready to Experience Butterfly?
           </h2>
           <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-            Book your table or order for delivery and let us take you on a culinary journey
+            Book your table or order for delivery and let us take you on a
+            culinary journey
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/booking">
-              <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-background text-primary hover:bg-background/90"
+              >
                 <Users className="w-5 h-5 mr-2" />
                 Reserve a Table
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-background text-background hover:bg-background/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-background text-background hover:bg-background/10"
+            >
               <Phone className="w-5 h-5 mr-2" />
               Call: 7992240355
             </Button>

@@ -1,19 +1,25 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Calendar, 
-  Clock, 
-  Users, 
-  Phone, 
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Calendar,
+  Clock,
+  Users,
+  Phone,
   MessageSquare,
   Sparkles,
   ArrowLeft,
@@ -22,35 +28,54 @@ import {
   Heart,
   Music,
   Cake,
-  Flower
-} from 'lucide-react';
+  Flower,
+} from "lucide-react";
 
 const decorationOptions = [
-  { id: 'flowers', name: 'Fresh Flower Arrangements', price: 3500, icon: Flower },
-  { id: 'balloons', name: 'Elegant Balloon Setup', price: 2000, icon: PartyPopper },
-  { id: 'music', name: 'Live Music Performance', price: 15000, icon: Music },
-  { id: 'cake', name: 'Custom Celebration Cake', price: 5500, icon: Cake },
-  { id: 'romantic', name: 'Romantic Candle Setup', price: 3000, icon: Heart },
+  {
+    id: "flowers",
+    name: "Fresh Flower Arrangements",
+    price: 3500,
+    icon: Flower,
+  },
+  {
+    id: "balloons",
+    name: "Elegant Balloon Setup",
+    price: 2000,
+    icon: PartyPopper,
+  },
+  { id: "music", name: "Live Music Performance", price: 15000, icon: Music },
+  { id: "cake", name: "Custom Celebration Cake", price: 5500, icon: Cake },
+  { id: "romantic", name: "Romantic Candle Setup", price: 3000, icon: Heart },
 ];
 
 const timeSlots = [
-  '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', 
-  '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM'
+  "5:00 PM",
+  "5:30 PM",
+  "6:00 PM",
+  "6:30 PM",
+  "7:00 PM",
+  "7:30 PM",
+  "8:00 PM",
+  "8:30 PM",
+  "9:00 PM",
+  "9:30 PM",
+  "10:00 PM",
 ];
 
 export default function Booking() {
-  const [bookingType, setBookingType] = useState('table');
+  const [bookingType, setBookingType] = useState("table");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    time: '',
-    guests: '',
-    duration: '1',
-    specialRequests: '',
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "",
+    duration: "1",
+    specialRequests: "",
     decorations: [],
-    contactMethod: 'sms'
+    contactMethod: "sms",
   });
 
   const [selectedDecorations, setSelectedDecorations] = useState([]);
@@ -58,32 +83,34 @@ export default function Booking() {
 
   const handleDecorationChange = (decorationId, checked) => {
     if (checked) {
-      const decoration = decorationOptions.find(d => d.id === decorationId);
+      const decoration = decorationOptions.find((d) => d.id === decorationId);
       setSelectedDecorations([...selectedDecorations, decoration]);
       setTotalPrice(totalPrice + decoration.price);
     } else {
-      const decoration = decorationOptions.find(d => d.id === decorationId);
-      setSelectedDecorations(selectedDecorations.filter(d => d.id !== decorationId));
+      const decoration = decorationOptions.find((d) => d.id === decorationId);
+      setSelectedDecorations(
+        selectedDecorations.filter((d) => d.id !== decorationId),
+      );
       setTotalPrice(totalPrice - decoration.price);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const bookingData = {
       ...formData,
       type: bookingType,
       decorations: selectedDecorations,
       totalPrice,
-      status: 'pending'
+      status: "pending",
     };
 
     try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
+      const response = await fetch("/api/bookings", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(bookingData),
       });
@@ -91,28 +118,28 @@ export default function Booking() {
       if (response.ok) {
         const result = await response.json();
         alert(`Booking submitted successfully! Reference: ${result.reference}`);
-        
+
         // Reset form
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          time: '',
-          guests: '',
-          duration: '1',
-          specialRequests: '',
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          time: "",
+          guests: "",
+          duration: "1",
+          specialRequests: "",
           decorations: [],
-          contactMethod: 'sms'
+          contactMethod: "sms",
         });
         setSelectedDecorations([]);
         setTotalPrice(0);
       } else {
-        alert('Error submitting booking. Please try again.');
+        alert("Error submitting booking. Please try again.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error submitting booking. Please try again.');
+      console.error("Error:", error);
+      alert("Error submitting booking. Please try again.");
     }
   };
 
@@ -136,7 +163,10 @@ export default function Booking() {
                 </span>
               </div>
             </Link>
-            <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+            <Button
+              variant="outline"
+              className="border-gold text-gold hover:bg-gold/10"
+            >
               <Phone className="w-4 h-4 mr-2" />
               Call: 7992240355
             </Button>
@@ -150,18 +180,29 @@ export default function Booking() {
             Reserve Your Experience
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Whether it's an intimate dinner or a grand celebration, we'll make it unforgettable
+            Whether it's an intimate dinner or a grand celebration, we'll make
+            it unforgettable
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Tabs value={bookingType} onValueChange={setBookingType} className="w-full">
+          <Tabs
+            value={bookingType}
+            onValueChange={setBookingType}
+            className="w-full"
+          >
             <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="table" className="flex items-center space-x-2">
+              <TabsTrigger
+                value="table"
+                className="flex items-center space-x-2"
+              >
                 <Utensils className="w-4 h-4" />
                 <span>Table Reservation</span>
               </TabsTrigger>
-              <TabsTrigger value="party" className="flex items-center space-x-2">
+              <TabsTrigger
+                value="party"
+                className="flex items-center space-x-2"
+              >
                 <PartyPopper className="w-4 h-4" />
                 <span>Party Booking</span>
               </TabsTrigger>
@@ -186,7 +227,12 @@ export default function Booking() {
                             <Input
                               id="name"
                               value={formData.name}
-                              onChange={(e) => setFormData({...formData, name: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  name: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
@@ -196,7 +242,12 @@ export default function Booking() {
                               id="email"
                               type="email"
                               value={formData.email}
-                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  email: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
@@ -208,19 +259,31 @@ export default function Booking() {
                               id="phone"
                               type="tel"
                               value={formData.phone}
-                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  phone: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
                           <div>
                             <Label htmlFor="guests">Number of Guests *</Label>
-                            <Select value={formData.guests} onValueChange={(value) => setFormData({...formData, guests: value})}>
+                            <Select
+                              value={formData.guests}
+                              onValueChange={(value) =>
+                                setFormData({ ...formData, guests: value })
+                              }
+                            >
                               <SelectTrigger>
                                 <SelectValue placeholder="Select guests" />
                               </SelectTrigger>
                               <SelectContent>
-                                {[1,2,3,4,5,6,7,8].map(num => (
-                                  <SelectItem key={num} value={num.toString()}>{num} {num === 1 ? 'Guest' : 'Guests'}</SelectItem>
+                                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                                  <SelectItem key={num} value={num.toString()}>
+                                    {num} {num === 1 ? "Guest" : "Guests"}
+                                  </SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
@@ -233,20 +296,32 @@ export default function Booking() {
                               id="date"
                               type="date"
                               value={formData.date}
-                              onChange={(e) => setFormData({...formData, date: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  date: e.target.value,
+                                })
+                              }
                               required
-                              min={new Date().toISOString().split('T')[0]}
+                              min={new Date().toISOString().split("T")[0]}
                             />
                           </div>
                           <div>
                             <Label htmlFor="time">Preferred Time *</Label>
-                            <Select value={formData.time} onValueChange={(value) => setFormData({...formData, time: value})}>
+                            <Select
+                              value={formData.time}
+                              onValueChange={(value) =>
+                                setFormData({ ...formData, time: value })
+                              }
+                            >
                               <SelectTrigger>
                                 <SelectValue placeholder="Select time" />
                               </SelectTrigger>
                               <SelectContent>
-                                {timeSlots.map(time => (
-                                  <SelectItem key={time} value={time}>{time}</SelectItem>
+                                {timeSlots.map((time) => (
+                                  <SelectItem key={time} value={time}>
+                                    {time}
+                                  </SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
@@ -271,7 +346,12 @@ export default function Booking() {
                             <Input
                               id="name"
                               value={formData.name}
-                              onChange={(e) => setFormData({...formData, name: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  name: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
@@ -281,7 +361,12 @@ export default function Booking() {
                               id="email"
                               type="email"
                               value={formData.email}
-                              onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  email: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
@@ -293,19 +378,33 @@ export default function Booking() {
                               id="phone"
                               type="tel"
                               value={formData.phone}
-                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  phone: e.target.value,
+                                })
+                              }
                               required
                             />
                           </div>
                           <div>
                             <Label htmlFor="guests">Number of Guests *</Label>
-                            <Select value={formData.guests} onValueChange={(value) => setFormData({...formData, guests: value})}>
+                            <Select
+                              value={formData.guests}
+                              onValueChange={(value) =>
+                                setFormData({ ...formData, guests: value })
+                              }
+                            >
                               <SelectTrigger>
                                 <SelectValue placeholder="Select guests" />
                               </SelectTrigger>
                               <SelectContent>
-                                {[10,15,20,25,30,35,40,50,60,80,100].map(num => (
-                                  <SelectItem key={num} value={num.toString()}>{num} Guests</SelectItem>
+                                {[
+                                  10, 15, 20, 25, 30, 35, 40, 50, 60, 80, 100,
+                                ].map((num) => (
+                                  <SelectItem key={num} value={num.toString()}>
+                                    {num} Guests
+                                  </SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
@@ -318,34 +417,58 @@ export default function Booking() {
                               id="date"
                               type="date"
                               value={formData.date}
-                              onChange={(e) => setFormData({...formData, date: e.target.value})}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  date: e.target.value,
+                                })
+                              }
                               required
-                              min={new Date().toISOString().split('T')[0]}
+                              min={new Date().toISOString().split("T")[0]}
                             />
                           </div>
                           <div>
                             <Label htmlFor="time">Start Time *</Label>
-                            <Select value={formData.time} onValueChange={(value) => setFormData({...formData, time: value})}>
+                            <Select
+                              value={formData.time}
+                              onValueChange={(value) =>
+                                setFormData({ ...formData, time: value })
+                              }
+                            >
                               <SelectTrigger>
                                 <SelectValue placeholder="Select time" />
                               </SelectTrigger>
                               <SelectContent>
-                                {timeSlots.map(time => (
-                                  <SelectItem key={time} value={time}>{time}</SelectItem>
+                                {timeSlots.map((time) => (
+                                  <SelectItem key={time} value={time}>
+                                    {time}
+                                  </SelectItem>
                                 ))}
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
                         <div>
-                          <Label htmlFor="duration">Event Duration (hours) *</Label>
-                          <Select value={formData.duration} onValueChange={(value) => setFormData({...formData, duration: value})}>
+                          <Label htmlFor="duration">
+                            Event Duration (hours) *
+                          </Label>
+                          <Select
+                            value={formData.duration}
+                            onValueChange={(value) =>
+                              setFormData({ ...formData, duration: value })
+                            }
+                          >
                             <SelectTrigger>
                               <SelectValue placeholder="Select duration" />
                             </SelectTrigger>
                             <SelectContent>
-                              {[1,2,3,4,5,6].map(hours => (
-                                <SelectItem key={hours} value={hours.toString()}>{hours} {hours === 1 ? 'Hour' : 'Hours'}</SelectItem>
+                              {[1, 2, 3, 4, 5, 6].map((hours) => (
+                                <SelectItem
+                                  key={hours}
+                                  value={hours.toString()}
+                                >
+                                  {hours} {hours === 1 ? "Hour" : "Hours"}
+                                </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
@@ -353,19 +476,32 @@ export default function Booking() {
 
                         {/* Decoration Options */}
                         <div>
-                          <Label className="text-base font-semibold mb-4 block">Decoration Options</Label>
+                          <Label className="text-base font-semibold mb-4 block">
+                            Decoration Options
+                          </Label>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                             {decorationOptions.map((decoration) => {
                               const IconComponent = decoration.icon;
                               return (
-                                <div key={decoration.id} className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-warm/30 transition-colors">
+                                <div
+                                  key={decoration.id}
+                                  className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-warm/30 transition-colors"
+                                >
                                   <Checkbox
                                     id={decoration.id}
-                                    onCheckedChange={(checked) => handleDecorationChange(decoration.id, checked)}
+                                    onCheckedChange={(checked) =>
+                                      handleDecorationChange(
+                                        decoration.id,
+                                        checked,
+                                      )
+                                    }
                                   />
                                   <IconComponent className="w-5 h-5 text-primary" />
                                   <div className="flex-1">
-                                    <label htmlFor={decoration.id} className="font-medium cursor-pointer">
+                                    <label
+                                      htmlFor={decoration.id}
+                                      className="font-medium cursor-pointer"
+                                    >
                                       {decoration.name}
                                     </label>
                                     <div className="text-sm text-muted-foreground">
@@ -388,25 +524,42 @@ export default function Booking() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <Label htmlFor="specialRequests">Special Requests or Dietary Requirements</Label>
+                        <Label htmlFor="specialRequests">
+                          Special Requests or Dietary Requirements
+                        </Label>
                         <Textarea
                           id="specialRequests"
                           placeholder="Tell us about any special occasions, dietary restrictions, or specific requests..."
                           value={formData.specialRequests}
-                          onChange={(e) => setFormData({...formData, specialRequests: e.target.value})}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              specialRequests: e.target.value,
+                            })
+                          }
                           rows={4}
                         />
                       </div>
                       <div>
-                        <Label className="text-base font-semibold mb-3 block">Preferred Contact Method</Label>
+                        <Label className="text-base font-semibold mb-3 block">
+                          Preferred Contact Method
+                        </Label>
                         <div className="flex space-x-4">
                           <div className="flex items-center space-x-2">
                             <Checkbox
                               id="sms"
-                              checked={formData.contactMethod === 'sms'}
-                              onCheckedChange={() => setFormData({...formData, contactMethod: 'sms'})}
+                              checked={formData.contactMethod === "sms"}
+                              onCheckedChange={() =>
+                                setFormData({
+                                  ...formData,
+                                  contactMethod: "sms",
+                                })
+                              }
                             />
-                            <Label htmlFor="sms" className="flex items-center space-x-2 cursor-pointer">
+                            <Label
+                              htmlFor="sms"
+                              className="flex items-center space-x-2 cursor-pointer"
+                            >
                               <MessageSquare className="w-4 h-4" />
                               <span>SMS</span>
                             </Label>
@@ -414,10 +567,18 @@ export default function Booking() {
                           <div className="flex items-center space-x-2">
                             <Checkbox
                               id="whatsapp"
-                              checked={formData.contactMethod === 'whatsapp'}
-                              onCheckedChange={() => setFormData({...formData, contactMethod: 'whatsapp'})}
+                              checked={formData.contactMethod === "whatsapp"}
+                              onCheckedChange={() =>
+                                setFormData({
+                                  ...formData,
+                                  contactMethod: "whatsapp",
+                                })
+                              }
                             />
-                            <Label htmlFor="whatsapp" className="flex items-center space-x-2 cursor-pointer">
+                            <Label
+                              htmlFor="whatsapp"
+                              className="flex items-center space-x-2 cursor-pointer"
+                            >
                               <Phone className="w-4 h-4" />
                               <span>WhatsApp</span>
                             </Label>
@@ -438,8 +599,13 @@ export default function Booking() {
                       <div className="space-y-2">
                         <div className="flex justify-between">
                           <span>Type:</span>
-                          <Badge variant="outline" className="border-primary text-primary">
-                            {bookingType === 'table' ? 'Table Reservation' : 'Party Booking'}
+                          <Badge
+                            variant="outline"
+                            className="border-primary text-primary"
+                          >
+                            {bookingType === "table"
+                              ? "Table Reservation"
+                              : "Party Booking"}
                           </Badge>
                         </div>
                         {formData.guests && (
@@ -451,7 +617,9 @@ export default function Booking() {
                         {formData.date && (
                           <div className="flex justify-between">
                             <span>Date:</span>
-                            <span>{new Date(formData.date).toLocaleDateString()}</span>
+                            <span>
+                              {new Date(formData.date).toLocaleDateString()}
+                            </span>
                           </div>
                         )}
                         {formData.time && (
@@ -460,7 +628,7 @@ export default function Booking() {
                             <span>{formData.time}</span>
                           </div>
                         )}
-                        {bookingType === 'party' && formData.duration && (
+                        {bookingType === "party" && formData.duration && (
                           <div className="flex justify-between">
                             <span>Duration:</span>
                             <span>{formData.duration} hour(s)</span>
@@ -468,34 +636,46 @@ export default function Booking() {
                         )}
                       </div>
 
-                      {bookingType === 'party' && selectedDecorations.length > 0 && (
-                        <>
-                          <div className="border-t pt-4">
-                            <h4 className="font-semibold mb-2">Selected Decorations:</h4>
-                            <div className="space-y-2">
-                              {selectedDecorations.map((decoration) => (
-                                <div key={decoration.id} className="flex justify-between text-sm">
-                                  <span>{decoration.name}</span>
-                                  <span>₹{decoration.price}</span>
-                                </div>
-                              ))}
+                      {bookingType === "party" &&
+                        selectedDecorations.length > 0 && (
+                          <>
+                            <div className="border-t pt-4">
+                              <h4 className="font-semibold mb-2">
+                                Selected Decorations:
+                              </h4>
+                              <div className="space-y-2">
+                                {selectedDecorations.map((decoration) => (
+                                  <div
+                                    key={decoration.id}
+                                    className="flex justify-between text-sm"
+                                  >
+                                    <span>{decoration.name}</span>
+                                    <span>₹{decoration.price}</span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                          <div className="border-t pt-4">
-                            <div className="flex justify-between font-semibold text-lg">
-                              <span>Additional Services:</span>
-                              <span className="text-primary">₹{totalPrice}</span>
+                            <div className="border-t pt-4">
+                              <div className="flex justify-between font-semibold text-lg">
+                                <span>Additional Services:</span>
+                                <span className="text-primary">
+                                  ₹{totalPrice}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </>
-                      )}
+                          </>
+                        )}
 
                       <div className="border-t pt-4">
                         <p className="text-sm text-muted-foreground mb-4">
-                          You will receive confirmation via {formData.contactMethod === 'sms' ? 'SMS' : 'WhatsApp'} at: 7992240355
+                          You will receive confirmation via{" "}
+                          {formData.contactMethod === "sms"
+                            ? "SMS"
+                            : "WhatsApp"}{" "}
+                          at: 7992240355
                         </p>
-                        <Button 
-                          type="submit" 
+                        <Button
+                          type="submit"
                           className="w-full bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold"
                           size="lg"
                         >
@@ -513,7 +693,11 @@ export default function Booking() {
                         <p className="text-sm text-muted-foreground mb-3">
                           Call us directly for immediate assistance
                         </p>
-                        <Button variant="outline" size="sm" className="border-gold text-gold hover:bg-gold/10">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-gold text-gold hover:bg-gold/10"
+                        >
                           <Phone className="w-4 h-4 mr-2" />
                           7992240355
                         </Button>

@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Sparkles, Construction } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft, Sparkles, Construction } from "lucide-react";
 
 interface PlaceholderPageProps {
   title: string;
   description: string;
 }
 
-export default function PlaceholderPage({ title, description }: PlaceholderPageProps) {
+export default function PlaceholderPage({
+  title,
+  description,
+}: PlaceholderPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-warm via-background to-warm">
       {/* Navigation */}
@@ -45,11 +48,15 @@ export default function PlaceholderPage({ title, description }: PlaceholderPageP
               </p>
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  This page is currently under development. Please continue prompting to help us fill in the content for this section.
+                  This page is currently under development. Please continue
+                  prompting to help us fill in the content for this section.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/">
-                    <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                    <Button
+                      variant="outline"
+                      className="border-gold text-gold hover:bg-gold/10"
+                    >
                       Back to Home
                     </Button>
                   </Link>

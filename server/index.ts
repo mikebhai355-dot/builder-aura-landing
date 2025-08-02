@@ -2,11 +2,11 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { 
-  createBooking, 
-  getAllBookings, 
-  updateBookingStatus, 
-  getBookingByReference 
+import {
+  createBooking,
+  getAllBookings,
+  updateBookingStatus,
+  getBookingByReference,
 } from "./routes/bookings";
 
 export function createServer() {

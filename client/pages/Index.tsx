@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Calendar,
   Clock,
@@ -17,8 +17,8 @@ import {
   MessageSquare,
   Instagram,
   Facebook,
-  Map
-} from 'lucide-react';
+  Map,
+} from "lucide-react";
 
 const menuHighlights = [
   {
@@ -26,29 +26,30 @@ const menuHighlights = [
     description: "Fresh handmade pasta with truffle oil and wild mushrooms",
     price: "₹1,800",
     image: "🍝",
-    category: "Main Course"
+    category: "Main Course",
   },
   {
     name: "Golden Sunset Salmon",
     description: "Pan-seared Atlantic salmon with citrus glaze",
     price: "₹2,400",
     image: "🐟",
-    category: "Seafood"
+    category: "Seafood",
   },
   {
     name: "Garden Symphony Salad",
     description: "Fresh mixed greens with seasonal fruits and nuts",
     price: "₹1,350",
     image: "🥗",
-    category: "Appetizer"
+    category: "Appetizer",
   },
   {
     name: "Royal Butter Chicken",
-    description: "Tender chicken in rich tomato cream sauce with aromatic spices",
+    description:
+      "Tender chicken in rich tomato cream sauce with aromatic spices",
     price: "₹2,200",
     image: "🍛",
-    category: "North Indian"
-  }
+    category: "North Indian",
+  },
 ];
 
 export default function Index() {
@@ -78,10 +79,30 @@ export default function Index() {
               </span>
             </div>
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-              <Link to="/" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Home</Link>
-              <Link to="/menu" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Menu</Link>
-              <Link to="/booking" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Reservations</Link>
-              <Link to="/contact" className="text-foreground hover:text-primary transition-colors text-sm xl:text-base">Contact</Link>
+              <Link
+                to="/"
+                className="text-foreground hover:text-primary transition-colors text-sm xl:text-base"
+              >
+                Home
+              </Link>
+              <Link
+                to="/menu"
+                className="text-foreground hover:text-primary transition-colors text-sm xl:text-base"
+              >
+                Menu
+              </Link>
+              <Link
+                to="/booking"
+                className="text-foreground hover:text-primary transition-colors text-sm xl:text-base"
+              >
+                Reservations
+              </Link>
+              <Link
+                to="/contact"
+                className="text-foreground hover:text-primary transition-colors text-sm xl:text-base"
+              >
+                Contact
+              </Link>
             </div>
             <Link to="/booking">
               <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
@@ -97,28 +118,42 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-gold/5"></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
-            <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+            <div
+              className={`transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}`}
+            >
               <Badge className="mb-6 bg-gold/10 text-gold border-gold/20 hover:bg-gold/20">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Fine Dining Experience
               </Badge>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-gold to-copper bg-clip-text text-transparent leading-tight">
-                Welcome to<br />
-                Butterfly Garden<br />
-                <span className="text-2xl md:text-4xl lg:text-5xl">Restaurant & Cafe</span>
+                Welcome to
+                <br />
+                Butterfly Garden
+                <br />
+                <span className="text-2xl md:text-4xl lg:text-5xl">
+                  Restaurant & Cafe
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-                Where culinary artistry meets elegant ambiance. Experience flavors that dance on your palate like butterflies in a garden.
+                Where culinary artistry meets elegant ambiance. Experience
+                flavors that dance on your palate like butterflies in a garden.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link to="/booking">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold px-8 py-6 text-lg"
+                  >
                     <Calendar className="w-5 h-5 mr-2" />
                     Reserve Your Table
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="border-gold text-gold hover:bg-gold/10 px-8 py-6 text-lg">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-gold text-gold hover:bg-gold/10 px-8 py-6 text-lg"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 7992240355
                 </Button>
@@ -126,39 +161,39 @@ export default function Index() {
             </div>
           </div>
         </div>
-        
+
         {/* Animated Colorful Butterflies */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Top area butterflies - avoiding header */}
           <div className="absolute top-32 left-5 text-3xl animate-[flutter_6s_ease-in-out_infinite] opacity-70">
-            <span style={{color: '#FF6B6B'}}>🦋</span>
+            <span style={{ color: "#FF6B6B" }}>🦋</span>
           </div>
           <div className="absolute top-28 right-16 text-2xl animate-[flutter_8s_ease-in-out_infinite_2s] opacity-60">
-            <span style={{color: '#4ECDC4'}}>🦋</span>
+            <span style={{ color: "#4ECDC4" }}>🦋</span>
           </div>
 
           {/* Side butterflies - avoiding main content */}
           <div className="absolute top-48 left-8 text-xl animate-[flutter_10s_ease-in-out_infinite_4s] opacity-50">
-            <span style={{color: '#45B7D1'}}>🦋</span>
+            <span style={{ color: "#45B7D1" }}>🦋</span>
           </div>
           <div className="absolute top-52 right-12 text-2xl animate-[flutter_7s_ease-in-out_infinite_1s] opacity-65">
-            <span style={{color: '#96CEB4'}}>🦋</span>
+            <span style={{ color: "#96CEB4" }}>🦋</span>
           </div>
 
           {/* Corner butterflies */}
           <div className="absolute bottom-32 left-12 text-xl animate-[flutter_9s_ease-in-out_infinite_3s] opacity-55">
-            <span style={{color: '#FFEAA7'}}>🦋</span>
+            <span style={{ color: "#FFEAA7" }}>🦋</span>
           </div>
           <div className="absolute bottom-28 right-8 text-2xl animate-[flutter_5s_ease-in-out_infinite_2.5s] opacity-60">
-            <span style={{color: '#DDA0DD'}}>🦋</span>
+            <span style={{ color: "#DDA0DD" }}>🦋</span>
           </div>
 
           {/* Far edges - extra spacing from content */}
           <div className="absolute top-72 left-4 text-lg animate-[flutter_11s_ease-in-out_infinite_1.5s] opacity-45">
-            <span style={{color: '#F39C12'}}>🦋</span>
+            <span style={{ color: "#F39C12" }}>🦋</span>
           </div>
           <div className="absolute top-80 right-6 text-lg animate-[flutter_6.5s_ease-in-out_infinite_3.5s] opacity-50">
-            <span style={{color: '#E74C3C'}}>🦋</span>
+            <span style={{ color: "#E74C3C" }}>🦋</span>
           </div>
         </div>
 
@@ -172,9 +207,12 @@ export default function Index() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">Why Choose Butterfly Garden?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">
+              Why Choose Butterfly Garden?
+            </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              We offer more than just a meal - we create unforgettable experiences
+              We offer more than just a meal - we create unforgettable
+              experiences
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -184,7 +222,10 @@ export default function Index() {
                   <ChefHat className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Expert Chefs</h3>
-                <p className="text-muted-foreground text-sm">Award-winning chefs crafting exceptional dishes with the finest ingredients</p>
+                <p className="text-muted-foreground text-sm">
+                  Award-winning chefs crafting exceptional dishes with the
+                  finest ingredients
+                </p>
               </CardContent>
             </Card>
             <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
@@ -193,7 +234,10 @@ export default function Index() {
                   <Sparkles className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Elegant Ambiance</h3>
-                <p className="text-muted-foreground text-sm">Sophisticated atmosphere perfect for romantic dinners and special celebrations</p>
+                <p className="text-muted-foreground text-sm">
+                  Sophisticated atmosphere perfect for romantic dinners and
+                  special celebrations
+                </p>
               </CardContent>
             </Card>
             <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
@@ -201,8 +245,13 @@ export default function Index() {
                 <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Heart className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Exceptional Service</h3>
-                <p className="text-muted-foreground text-sm">Personalized attention to make every visit memorable and special</p>
+                <h3 className="text-lg font-semibold mb-2">
+                  Exceptional Service
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Personalized attention to make every visit memorable and
+                  special
+                </p>
               </CardContent>
             </Card>
             <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
@@ -210,8 +259,13 @@ export default function Index() {
                 <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Fresh Ingredients</h3>
-                <p className="text-muted-foreground text-sm">Daily sourced local and organic ingredients ensuring freshness and quality</p>
+                <h3 className="text-lg font-semibold mb-2">
+                  Fresh Ingredients
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  Daily sourced local and organic ingredients ensuring freshness
+                  and quality
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -222,14 +276,19 @@ export default function Index() {
       <section className="py-16 bg-warm/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Signature Dishes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              Signature Dishes
+            </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Taste our chef's carefully curated selection of exceptional dishes
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {menuHighlights.map((dish, index) => (
-              <Card key={index} className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group overflow-hidden">
+              <Card
+                key={index}
+                className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group overflow-hidden"
+              >
                 <CardContent className="p-0">
                   <div className="relative">
                     <div className="h-48 bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
@@ -242,7 +301,9 @@ export default function Index() {
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="text-xl font-semibold">{dish.name}</h3>
-                      <span className="text-xl font-bold text-primary">{dish.price}</span>
+                      <span className="text-xl font-bold text-primary">
+                        {dish.price}
+                      </span>
                     </div>
                     <p className="text-muted-foreground">{dish.description}</p>
                   </div>
@@ -252,7 +313,11 @@ export default function Index() {
           </div>
           <div className="text-center mt-8">
             <Link to="/menu">
-              <Button variant="outline" size="lg" className="border-gold text-gold hover:bg-gold/10">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-gold text-gold hover:bg-gold/10"
+              >
                 View Full Menu
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
@@ -265,9 +330,12 @@ export default function Index() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Catering & Accommodation Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              Catering & Accommodation Services
+            </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              We bring our exceptional cuisine and hospitality to your special events and gatherings
+              We bring our exceptional cuisine and hospitality to your special
+              events and gatherings
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -277,8 +345,13 @@ export default function Index() {
                   <Users className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Event Catering</h3>
-                <p className="text-muted-foreground mb-4">Full-service catering for weddings, corporate events, and special celebrations with our signature dishes</p>
-                <Badge className="bg-primary/10 text-primary">50-500 Guests</Badge>
+                <p className="text-muted-foreground mb-4">
+                  Full-service catering for weddings, corporate events, and
+                  special celebrations with our signature dishes
+                </p>
+                <Badge className="bg-primary/10 text-primary">
+                  50-500 Guests
+                </Badge>
               </CardContent>
             </Card>
 
@@ -288,7 +361,10 @@ export default function Index() {
                   <Calendar className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Private Dining</h3>
-                <p className="text-muted-foreground mb-4">Exclusive private dining rooms for intimate gatherings, business meetings, and family celebrations</p>
+                <p className="text-muted-foreground mb-4">
+                  Exclusive private dining rooms for intimate gatherings,
+                  business meetings, and family celebrations
+                </p>
                 <Badge className="bg-gold/10 text-gold">8-25 Guests</Badge>
               </CardContent>
             </Card>
@@ -299,8 +375,13 @@ export default function Index() {
                   <MapPin className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Venue Booking</h3>
-                <p className="text-muted-foreground mb-4">Complete venue rental with decoration, entertainment, and full-service hospitality for all occasions</p>
-                <Badge className="bg-copper/10 text-copper">Up to 200 Guests</Badge>
+                <p className="text-muted-foreground mb-4">
+                  Complete venue rental with decoration, entertainment, and
+                  full-service hospitality for all occasions
+                </p>
+                <Badge className="bg-copper/10 text-copper">
+                  Up to 200 Guests
+                </Badge>
               </CardContent>
             </Card>
 
@@ -309,9 +390,16 @@ export default function Index() {
                 <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Clock className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Corporate Services</h3>
-                <p className="text-muted-foreground mb-4">Business lunch meetings, team dinners, and corporate event catering with professional service</p>
-                <Badge className="bg-primary/10 text-primary">Business Hours</Badge>
+                <h3 className="text-xl font-semibold mb-2">
+                  Corporate Services
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Business lunch meetings, team dinners, and corporate event
+                  catering with professional service
+                </p>
+                <Badge className="bg-primary/10 text-primary">
+                  Business Hours
+                </Badge>
               </CardContent>
             </Card>
 
@@ -321,7 +409,10 @@ export default function Index() {
                   <Heart className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Wedding Packages</h3>
-                <p className="text-muted-foreground mb-4">Comprehensive wedding catering and venue services with customized menus and decoration</p>
+                <p className="text-muted-foreground mb-4">
+                  Comprehensive wedding catering and venue services with
+                  customized menus and decoration
+                </p>
                 <Badge className="bg-gold/10 text-gold">Special Packages</Badge>
               </CardContent>
             </Card>
@@ -331,9 +422,16 @@ export default function Index() {
                 <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Sparkles className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Special Occasions</h3>
-                <p className="text-muted-foreground mb-4">Birthday parties, anniversaries, and festive celebrations with themed decorations and special menus</p>
-                <Badge className="bg-copper/10 text-copper">Custom Themes</Badge>
+                <h3 className="text-xl font-semibold mb-2">
+                  Special Occasions
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Birthday parties, anniversaries, and festive celebrations with
+                  themed decorations and special menus
+                </p>
+                <Badge className="bg-copper/10 text-copper">
+                  Custom Themes
+                </Badge>
               </CardContent>
             </Card>
           </div>
@@ -342,19 +440,26 @@ export default function Index() {
             <div className="bg-warm/30 rounded-lg p-6 max-w-3xl mx-auto">
               <h3 className="text-xl font-semibold mb-3">Book Our Services</h3>
               <p className="text-muted-foreground mb-4">
-                Contact us to discuss your event requirements and get a customized quote for our catering and accommodation services.
+                Contact us to discuss your event requirements and get a
+                customized quote for our catering and accommodation services.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90">
                   <Phone className="w-4 h-4 mr-2" />
                   Call: 7992240355
                 </Button>
-                <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                <Button
+                  variant="outline"
+                  className="border-gold text-gold hover:bg-gold/10"
+                >
                   <MessageSquare className="w-4 h-4 mr-2" />
                   WhatsApp Inquiry
                 </Button>
                 <Link to="/contact">
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                  <Button
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary/10"
+                  >
                     <Calendar className="w-4 h-4 mr-2" />
                     Get Quote
                   </Button>
@@ -368,18 +473,29 @@ export default function Index() {
       {/* Quick Booking CTA */}
       <section className="py-16 bg-gradient-to-r from-primary to-gold">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground">Ready for an Unforgettable Experience?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground">
+            Ready for an Unforgettable Experience?
+          </h2>
           <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-            Book your table now and let us create magical moments for you and your loved ones
+            Book your table now and let us create magical moments for you and
+            your loved ones
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/booking">
-              <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90 px-8 py-6 text-lg font-semibold">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-background text-primary hover:bg-background/90 px-8 py-6 text-lg font-semibold"
+              >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Table
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-background text-background hover:bg-background/10 px-8 py-6 text-lg">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-background text-background hover:bg-background/10 px-8 py-6 text-lg"
+            >
               <Phone className="w-5 h-5 mr-2" />
               Call Now: 7992240355
             </Button>
@@ -396,10 +512,13 @@ export default function Index() {
                 <div className="w-8 h-8 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <span className="text-lg md:text-xl font-bold">Butterfly Garden</span>
+                <span className="text-lg md:text-xl font-bold">
+                  Butterfly Garden
+                </span>
               </div>
               <p className="text-background/80 mb-4">
-                Creating exceptional dining experiences with passion and artistry.
+                Creating exceptional dining experiences with passion and
+                artistry.
               </p>
             </div>
             <div>
@@ -423,25 +542,45 @@ export default function Index() {
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="space-y-4">
                 <div className="flex flex-col space-y-3">
-                  <a href="https://wa.me/917992240355" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-green-400 transition-all duration-300 group">
+                  <a
+                    href="https://wa.me/917992240355"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-background/80 hover:text-green-400 transition-all duration-300 group"
+                  >
                     <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center group-hover:bg-green-400 transition-colors">
                       <MessageSquare className="w-4 h-4 text-white" />
                     </div>
                     <span className="group-hover:text-green-400">WhatsApp</span>
                   </a>
-                  <a href="https://www.instagram.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-pink-400 transition-all duration-300 group">
+                  <a
+                    href="https://www.instagram.com/butterflygarden"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-background/80 hover:text-pink-400 transition-all duration-300 group"
+                  >
                     <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center group-hover:from-pink-400 group-hover:to-purple-400 transition-all">
                       <Instagram className="w-4 h-4 text-white" />
                     </div>
                     <span className="group-hover:text-pink-400">Instagram</span>
                   </a>
-                  <a href="https://www.facebook.com/butterflygarden" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-blue-400 transition-all duration-300 group">
+                  <a
+                    href="https://www.facebook.com/butterflygarden"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-background/80 hover:text-blue-400 transition-all duration-300 group"
+                  >
                     <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-500 transition-colors">
                       <Facebook className="w-4 h-4 text-white" />
                     </div>
                     <span className="group-hover:text-blue-400">Facebook</span>
                   </a>
-                  <a href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-background/80 hover:text-red-400 transition-all duration-300 group">
+                  <a
+                    href="https://maps.google.com/?q=Dumri,Gobarsahi,Muzaffarpur,Bihar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-background/80 hover:text-red-400 transition-all duration-300 group"
+                  >
                     <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center group-hover:bg-red-400 transition-colors">
                       <Map className="w-4 h-4 text-white" />
                     </div>

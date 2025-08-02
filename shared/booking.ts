@@ -7,12 +7,12 @@ export interface BookingData {
   time: string;
   guests: string;
   duration?: string;
-  type: 'table' | 'party';
+  type: "table" | "party";
   specialRequests?: string;
   decorations?: DecorationOption[];
   totalPrice?: number;
-  contactMethod: 'sms' | 'whatsapp';
-  status: 'pending' | 'confirmed' | 'rejected';
+  contactMethod: "sms" | "whatsapp";
+  status: "pending" | "confirmed" | "rejected";
   reference?: string;
   createdAt?: Date;
 }
@@ -38,6 +38,6 @@ export interface BookingListResponse {
 
 export interface UpdateBookingStatusRequest {
   id: string;
-  status: 'confirmed' | 'rejected';
+  status: "confirmed" | "rejected";
   adminNotes?: string;
 }
