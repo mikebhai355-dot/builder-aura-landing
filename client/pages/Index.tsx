@@ -18,6 +18,8 @@ import {
   Instagram,
   Facebook,
   Map,
+  Menu,
+  X,
 } from "lucide-react";
 
 const menuHighlights = [
@@ -54,9 +56,15 @@ const menuHighlights = [
 
 export default function Index() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
+
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -104,18 +112,78 @@ export default function Index() {
                 Contact
               </Link>
             </div>
-            <Link to="/booking">
-              <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
-                Book Table
-              </Button>
-            </Link>
+
+            {/* Desktop Book Table Button */}
+            <div className="hidden lg:block">
+              <Link to="/booking">
+                <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
+                  Book Table
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-gold/20 absolute top-full left-0 right-0 z-50">
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <Link
+                to="/"
+                className="block text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/menu"
+                className="block text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Menu
+              </Link>
+              <Link
+                to="/booking"
+                className="block text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Reservations
+              </Link>
+              <Link
+                to="/contact"
+                className="block text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <Link to="/booking" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold">
+                  Book Table
+                </Button>
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Parallax */}
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-gold/5"></div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-primary/5 to-gold/5"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+          }}
+        ></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
             <div
@@ -142,21 +210,23 @@ export default function Index() {
                 <Link to="/booking">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold px-8 py-6 text-lg"
+                    className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 text-primary-foreground font-semibold px-8 py-6 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                   >
                     <Calendar className="w-5 h-5 mr-2" />
                     Reserve Your Table
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-gold text-gold hover:bg-gold/10 px-8 py-6 text-lg"
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call: 7992240355
-                </Button>
+                <a href="tel:7992240355">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-gold text-gold hover:bg-gold/10 px-8 py-6 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call: 7992240355
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -197,10 +267,25 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute top-32 left-10 w-16 h-16 bg-gradient-to-r from-gold to-primary rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-32 right-10 w-12 h-12 bg-gradient-to-r from-primary to-copper rounded-full opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-gold rounded-full opacity-20 animate-bounce delay-500"></div>
+        {/* Floating Elements with Parallax */}
+        <div
+          className="absolute top-32 left-10 w-16 h-16 bg-gradient-to-r from-gold to-primary rounded-full opacity-10 animate-pulse"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px) rotate(${scrollY * 0.1}deg)`,
+          }}
+        ></div>
+        <div
+          className="absolute bottom-32 right-10 w-12 h-12 bg-gradient-to-r from-primary to-copper rounded-full opacity-10 animate-pulse delay-1000"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px) rotate(${-scrollY * 0.1}deg)`,
+          }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/4 w-6 h-6 bg-gold rounded-full opacity-20 animate-bounce delay-500"
+          style={{
+            transform: `translateY(${scrollY * 0.4}px)`,
+          }}
+        ></div>
       </section>
 
       {/* Features Section */}
@@ -444,21 +529,25 @@ export default function Index() {
                 customized quote for our catering and accommodation services.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call: 7992240355
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-gold text-gold hover:bg-gold/10"
-                >
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  WhatsApp Inquiry
-                </Button>
+                <a href="tel:7992240355">
+                  <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90 w-full sm:w-auto">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call: 7992240355
+                  </Button>
+                </a>
+                <a href="https://wa.me/917992240355?text=Hello! I would like to inquire about catering services at Butterfly Garden Restaurant." target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    className="border-gold text-gold hover:bg-gold/10 w-full sm:w-auto"
+                  >
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    WhatsApp Inquiry
+                  </Button>
+                </a>
                 <Link to="/contact">
                   <Button
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary/10"
+                    className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
                   >
                     <Calendar className="w-4 h-4 mr-2" />
                     Get Quote
@@ -485,20 +574,22 @@ export default function Index() {
               <Button
                 size="lg"
                 variant="secondary"
-                className="bg-background text-primary hover:bg-background/90 px-8 py-6 text-lg font-semibold"
+                className="bg-background text-primary hover:bg-background/90 px-8 py-6 text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Table
               </Button>
             </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-background text-background hover:bg-background/10 px-8 py-6 text-lg"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now: 7992240355
-            </Button>
+            <a href="tel:7992240355">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-background text-background hover:bg-background/10 px-8 py-6 text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now: 7992240355
+              </Button>
+            </a>
           </div>
         </div>
       </section>
