@@ -454,7 +454,7 @@ export default function Menu() {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [deliveryMode, setDeliveryMode] = useState<'dine-in' | 'delivery' | 'pickup'>('dine-in');
 
-  const categories = ['All', 'Appetizer', 'Main Course', 'Seafood', 'Dessert', 'Beverage'];
+  const categories = ['All', 'Appetizer', 'Main Course', 'Seafood', 'North Indian', 'Fast Food', 'Dessert', 'Beverage'];
 
   useEffect(() => {
     filterAndSortItems();
