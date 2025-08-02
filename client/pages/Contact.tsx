@@ -29,7 +29,7 @@ import {
 const contactInfo = {
   phone: '7992240355',
   email: 'hello@butterflyrestaurant.com',
-  address: '123 Garden Street, Foodie District, City 12345',
+  address: 'Dumri, Gobarsahi, Muzaffarpur, Bihar 842001',
   hours: {
     'Monday - Thursday': '5:00 PM - 10:00 PM',
     'Friday - Saturday': '5:00 PM - 11:00 PM',
@@ -77,7 +77,7 @@ const faqs = [
   },
   {
     question: 'Can I bring my own wine?',
-    answer: 'We allow BYOB with a corkage fee of $25 per bottle. Our sommelier can also recommend wines from our extensive collection.'
+    answer: 'We allow BYOB with a corkage fee of ₹1,500 per bottle. Our sommelier can also recommend wines from our extensive collection.'
   }
 ];
 
