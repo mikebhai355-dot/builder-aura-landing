@@ -8,6 +8,13 @@ import {
   updateBookingStatus,
   getBookingByReference,
 } from "./routes/bookings";
+import {
+  getAllMenuItems,
+  createMenuItem,
+  updateMenuItem,
+  deleteMenuItem,
+  toggleMenuItemAvailability
+} from "./routes/menu";
 
 export function createServer() {
   const app = express();
