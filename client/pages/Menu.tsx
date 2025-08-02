@@ -778,7 +778,7 @@ export default function Menu() {
               <CardContent className="p-0">
                 <div className="flex flex-col md:flex-row">
                   {/* Item Image */}
-                  <div className="relative md:w-48 h-48 bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center">
+                  <div className="relative w-full md:w-48 h-40 md:h-48 bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center">
                     <span className="text-6xl">{item.image}</span>
                     <button
                       onClick={() => toggleFavorite(item.id)}
