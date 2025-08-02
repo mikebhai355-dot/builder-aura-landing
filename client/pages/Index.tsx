@@ -279,32 +279,106 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Catering and Services */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">What Our Guests Say</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Catering & Accommodation Services</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our valued customers
+              We bring our exceptional cuisine and hospitality to your special events and gatherings
             </p>
           </div>
-          <div className="max-w-2xl mx-auto">
-            <Card className="border-gold/20 bg-gradient-to-r from-warm/50 to-background">
-              <CardContent className="p-8 text-center">
-                <div className="flex justify-center mb-4">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                  ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <blockquote className="text-lg mb-4 text-foreground">
-                  "{testimonials[currentTestimonial].comment}"
-                </blockquote>
-                <div className="text-muted-foreground">
-                  <div className="font-semibold">{testimonials[currentTestimonial].name}</div>
-                  <div className="text-sm">{testimonials[currentTestimonial].date}</div>
-                </div>
+                <h3 className="text-xl font-semibold mb-2">Event Catering</h3>
+                <p className="text-muted-foreground mb-4">Full-service catering for weddings, corporate events, and special celebrations with our signature dishes</p>
+                <Badge className="bg-primary/10 text-primary">50-500 Guests</Badge>
               </CardContent>
             </Card>
+
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-gold to-copper rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Calendar className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Private Dining</h3>
+                <p className="text-muted-foreground mb-4">Exclusive private dining rooms for intimate gatherings, business meetings, and family celebrations</p>
+                <Badge className="bg-gold/10 text-gold">8-25 Guests</Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Venue Booking</h3>
+                <p className="text-muted-foreground mb-4">Complete venue rental with decoration, entertainment, and full-service hospitality for all occasions</p>
+                <Badge className="bg-copper/10 text-copper">Up to 200 Guests</Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary to-gold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Clock className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Corporate Services</h3>
+                <p className="text-muted-foreground mb-4">Business lunch meetings, team dinners, and corporate event catering with professional service</p>
+                <Badge className="bg-primary/10 text-primary">Business Hours</Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-gold to-copper rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Heart className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Wedding Packages</h3>
+                <p className="text-muted-foreground mb-4">Comprehensive wedding catering and venue services with customized menus and decoration</p>
+                <Badge className="bg-gold/10 text-gold">Special Packages</Badge>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10 group">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-copper to-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Sparkles className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Special Occasions</h3>
+                <p className="text-muted-foreground mb-4">Birthday parties, anniversaries, and festive celebrations with themed decorations and special menus</p>
+                <Badge className="bg-copper/10 text-copper">Custom Themes</Badge>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <div className="bg-warm/30 rounded-lg p-6 max-w-3xl mx-auto">
+              <h3 className="text-xl font-semibold mb-3">Book Our Services</h3>
+              <p className="text-muted-foreground mb-4">
+                Contact us to discuss your event requirements and get a customized quote for our catering and accommodation services.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button className="bg-gradient-to-r from-primary to-gold hover:from-primary/90 hover:to-gold/90">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call: 7992240355
+                </Button>
+                <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  WhatsApp Inquiry
+                </Button>
+                <Link to="/contact">
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Get Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
